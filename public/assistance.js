@@ -27,7 +27,7 @@ function run() {
         $chat.innerHTML = html + "<br>";
         $chat.scrollTop = 1000000;
         console.log(event.data);
-        ws.send("hop");
+        this.send("hop");
     });
     return;
     /*
