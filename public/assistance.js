@@ -12,7 +12,8 @@ function run() {
     var $name = document.querySelector("#name");
     var $notif = document.querySelector("#notif");
     var $bip = document.querySelector("#bip");
-    var myip = "[2a01:e35:139f:b290:78f6:ea7c:db6a:8673]:8081";
+    var myip = "https://fabi75.herokuapp.com:8081";
+
     myip = "81.57.251.41:8081";
     var ws = initWS(myip);
     ws.send("hop");
