@@ -4,7 +4,7 @@ function initWS(url, onmessage) {
     };
     function reinit() {
         try {
-            var webSocket = new WebSocket("wss://" + url);
+            var webSocket = new WebSocket("ws://" + url);
             webSocket.onopen = function (event) {
             };
             webSocket.onmessage = function (event) {
