@@ -14,7 +14,6 @@ function run() {
     var $bip = document.querySelector("#bip");
     var myip = "https://fabi75.herokuapp.com:8081";
 
-    myip = "81.57.251.41:8081";
     var ws = initWS(myip, function (event) {
         if (visible === false) {
             bip.play();
