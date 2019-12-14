@@ -1,0 +1,40 @@
+<html>
+
+<body>
+    <script src="goodsocket.js"></script>
+    <script src="assistance.js"></script>
+    <div id="login">
+        Your User name for this session :
+        <input id="name" type="text"></input>
+    </div>
+    <div id="main">
+        <button id="notif">Accept Notification</button>
+        Type your text here :
+        <input id="text" type="text"></input>
+        <div id="chat">
+        </div>
+    </div>
+    <div style="display: none;">
+        <audio id="bip" src="bip.mp3"></audio>
+    </div>
+    <script>
+    </script>
+    <style>
+        #main {
+            display: none;
+        }
+
+        #chat {
+            position: absolute;
+            top: 10%;
+            width: 100%;
+            bottom: 0%;
+            overflow: auto;
+
+            border: 2px black solid;
+        }
+    </style>
+
+</body>
+
+</html>
