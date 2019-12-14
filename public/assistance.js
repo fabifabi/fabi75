@@ -15,7 +15,20 @@ function run() {
     var myip = "https://fabi75.herokuapp.com:8081";
 
     myip = "81.57.251.41:8081";
-    var ws = initWS(myip);
+    var ws = initWS(myip, function (event) {
+        if (visible === false) {
+            bip.play();
+        }
+        var html = $chat.innerHTML;
+        var txt = event.data.split("¤ ");
+        if (window.Notification && Notification.permission === "granted") {
+            var n = new Notification(txt[0] + " : " + txt[1]);
+        }
+        html += txt[0] + " : " + txt[1];
+        $chat.innerHTML = html + "<br>";
+        $chat.scrollTop = 1000000;
+        console.log(event.data);
+    });
     ws.send("hop");
     return;
     /*
