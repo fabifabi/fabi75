@@ -163,7 +163,7 @@ var options = {};
 var server = http.createServer(options, app);
 server.listen(app.get("port"));
 
-var wss = new WebSocket.Server({ port: 8081 });
+var wss = new WebSocket.Server({ port: app.get("port") });
 wss.on('connection', function connection(ws) {
   ws.on('message', function incoming(data) {
     console.log(data);
