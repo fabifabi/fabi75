@@ -158,7 +158,7 @@ var emoji = require('node-emoji');
 var app = express();
 
 app.use(express.static(__dirname + "/public"));
-app.set('port', process.env.PORT || 3000;);
+app.set('port', process.env.PORT || 3000);
 var options = {};
 var server = http.createServer(options, app);
 server.listen(app.get("port"));
