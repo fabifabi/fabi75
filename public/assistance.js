@@ -12,7 +12,7 @@ function run() {
     var $name = document.querySelector("#name");
     var $notif = document.querySelector("#notif");
     var $bip = document.querySelector("#bip");
-    var myip = "fabi75.herokuapp.com:8081";
+    var myip = "fabi75.herokuapp.com";
 
     var ws = initWS(myip, function (event) {
         if (visible === false) {
