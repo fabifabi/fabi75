@@ -1,0 +1,221 @@
+# Page settings
+
+baseURL = "http://example.org/"
+languageCode = "en"
+title = ""
+theme = "hugo-devresume-theme"
+googleAnalytics = "UA-XXXXXXX-Y"
+
+
+
+
+
+
+[params]
+    author = "CowboySmall"
+    description = "DevResume - Bootstrap 4 Resume/CV Template For Software Developers"
+
+
+    primaryColor = "#54B689"
+    textPrimaryColor = "#292929"
+
+
+
+
+    [params.profile]
+        enable = true
+        name = "Pigère Fabien"
+        tagline = "Senior Software Engineer,Teacher,writer on IT"
+        avatar = "avatar.png"
+
+
+    [params.contact]
+        enable = true
+        location = "Paris"
+
+        #[[params.contact.list]]
+        #icon = "fas fa-phone-square"
+        #url = "tel:#"
+        #text = "0123 4567 890"
+        [[params.contact.list]]
+        icon = "fas fa-envelope-square"
+        url = "mailto:#"
+        text = "fabi75.pro@gmail.com"
+      #  [[params.contact.list]]
+      #  icon = "fas fa-globe"
+      #  url = "#"
+      #  text = "www.yourwebsite.com"
+
+    [params.skills]
+        enable = true
+
+        [[params.skills.list]]
+        title = "Technical"
+        [[params.skills.list.items]]
+        details = "JavaScript/Vanilla/Angular/Vue"
+        [[params.skills.list.items]]
+        details = "C/C++/C#/..."
+        [[params.skills.list.items]]
+        details = "Node.js/PHP"
+        [[params.skills.list.items]]
+        details = "SQL Server/MySQL"
+        [[params.skills.list.items]]
+        details = "OPtimisizing (Speed/UX/Bandwith/...)"
+        [[params.skills.list.items]]
+        details = "Lead and deliver complex software systems"
+
+        [[params.skills.list]]
+        title = "Professional"
+        [[params.skills.list.items]]
+        details = "Effective communication"
+        [[params.skills.list.items]]
+        details = "Team player"
+        [[params.skills.list.items]]
+        details = "Strong problem solver"
+        [[params.skills.list.items]]
+        details = "Good time management"
+        [[params.skills.list.items]]
+        details = "Love teach to Junior"
+
+
+    [params.education]
+        enable = true
+
+        [[params.education.list]]
+        degree = "MSc in Computer Science"
+        university = "University Diderot, Paris"
+        dates = "1996-1998"
+
+    [params.awards]
+        enable = false
+
+        [[params.awards.list]]
+        name = "Award Lorem Ipsum"
+        body = "Microsoft lorem ipsum"
+        date = "2019"
+        [[params.awards.list]]
+        name = "Award Donec Sodales"
+        body = "Oracle Aenean"
+        date = "2017"
+
+
+    [params.languages]
+        enable = true
+        [[params.languages.list]]
+        name = "French"
+        level = "Beginner"
+
+        [[params.languages.list]]
+        name = "English"
+        level = "Professional"
+
+
+    [params.interests]
+        enable = true
+
+        [[params.interests.list]]
+        name = "Food&Cook"
+        [[params.interests.list]]
+        name = "History"
+        [[params.interests.list]]
+        name = "Meet new different peoples"
+
+
+    [params.summary]
+        enable = true
+        text = "When I play my first video game,on Apple IIc ( I was 8 year old), i don't want play,i want know how they did it ! After all was logical,I begin to be a kind of Geek,leanr asm 68k,go a demomaker band (EKO),on Atari 520),learn by myself....For more theory learning I go Paris Diderot University.After my diploma,I was in various team (big or small) and publised (as part of the team) some games (VirtuaSkiper 2,Barbarian 3,KungFuRabbit),I tried more 'serious' business too...Like gazoline,dentist software,Microsoft specialist company,Nokia,Suez (french water company),3G company(ATDI), some banks (like EDENRED),after, I begin to be freelance,for choose mission i can help other and who fit to my value."
+        dates = "2014 - 2016"
+        company = "Dropbox"
+        details = "Role description goes here ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus."
+
+        [[params.experience.list]]
+        title = "Senior Developer,Freelance"
+        dates = "2012 - Now"
+        company = "Uber"
+        details = """In my Freelance job, as remote worker or not, I am more specialize in JavaScript,front and back, and some PHP. /
+Many company ask me to search simple&fast implementation, to give my opinion about how to make it better and fastly,etc./
+I used Vanilla.js, AngularJS, GoogleMap, D3.js, PhoneGap,JQPlot, HTML5 advanced APi ( Geolocalisation, Connection Zpeed,/
+History, WebWorker (front/back), Canvas, SVG, WEBGL,CSS3 Animation,Realtime Video...)/
+IpFormation University Teacher for student for Advanced Javascript Course./
+EDENRED Big worldwide financial company, I make a RealTime animation of big transaction on a World Map, in SVG (D3.js),/
+animation, REST API./
+STELLO PRODUCTION (realtime video) Many project, from prototype to production, like make a synchronisation between a/
+PPT and a video (android,ipod,PC...) in front only. Interactive interaction on a video in Realtime (websocket/node)./
+JAM (a little Start-up I help from begining) From android/Cordova special Plug-in, to automatic transformation of HTML page/
+to E-mailing, regular customer (and I love work with them !! Hello Guyssss!)/
+KYNAPSE (for a private health insurance) Make an automatic grid system by code (like Bootstrap but in 2D),reisze the/
+gris,font etc for always fit the windows. Filter in front side by JavaScript heavy data (200 MB) for make realtime.Make a little/
+framework for integration of D3.js statistic viewers./
+cTools Studio (VidoGeame) Work on KungFuRabbit Game (PC/XBOX version from iPhone), C++ and C#./
+And lot others..."""
+
+        [[params.experience.list]]
+        title = "Backend Developer"
+        dates = "2014 - 2016"
+        company = "Amazon"
+        details = "Role description goes here ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus."
+
+        [[params.experience.list]]
+        title = "Frontend Developer"
+        dates = "2013 - 2014"
+        company = "Startup"
+        details = "Role description goes here ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus."
+
+
+    [params.projects]
+        enable = true
+
+        [[params.projects.list]]
+        title = "Learn langage by playing !"
+        meta = "Open Source"
+        tagline = "I did an English/French/Spanish game,free,and withotu ads,for teach langage by game....The word are from LibreOffice,and the level (easy,average,hard) are fro m statistic of Goole search.From a definition or many synonims, u should find the answer.This game is free,and it is really optimise for bad connection,as the public is for poor country.Full free,no trackers,no ads."
+
+        [[params.projects.list]]
+        title = "Webcam RTC and Chat for assist help people who are not friendly with Internet."
+        meta = "Open Source"
+        tagline = "It is an a project for chat/screen control from the helper/voice and webcam chat(peer to peer) for help people in administratin website."
+
+        [[params.projects.list]]
+        title = "Big helper for develop in JavaScript"
+        meta = "Open Source"
+        tagline = "A kind of lib who help to debug lot more fastly,who log u more fastly,give you many statistics on what's happen on website,etc"
+
+    [params.information]
+        enable = true
+
+        [[params.information.list]]
+        title = "Papers"
+        [[params.information.list.items]]
+        details = "Since 2017· French Paper Magazine about IT 'Programmez!' (means 'let's code!'), Many article about Javscript stuff (Jquert vs Vanilla,firebase,Video on canvas FX,..."
+
+        [[params.information.list]]
+        title = "Interests"
+        details = "Food, History, Meet people who are openmind and think differently of me"
+
+
+
+
+
+
+
+
+    [params.social]
+        enable = true
+
+        [[params.social.list]]
+        icon = "fab fa-github-square"
+        url = "//github.com/username"
+        title = "username"
+        [[params.social.list]]
+        icon = "fab fa-linkedin"
+        url = "//linkedin.com/in/username"
+        title = "username"
+        [[params.social.list]]
+        icon = "fab fa-twitter-square"
+        url = "//twitter.com/username"
+        title = "@username"
+
+
+
+
+
