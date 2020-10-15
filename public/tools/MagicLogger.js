@@ -1,6 +1,6 @@
 // read config
 //console.log(JSON.stringify(window.performance.timing));
-if (debug === true) {
+if (debug !== undefined && debug === true) {
     if (typeof logConfig === "undefined") {
         window.logConfig = {
             buffer: true,
