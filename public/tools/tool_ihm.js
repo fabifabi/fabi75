@@ -1,8 +1,3 @@
-/*var log = console.log;
-var isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
-if (isSafari)
-    log = function (t) { console.log(t); }
-*/
 "use strict";
 function windowResize() {
     if (!isready)
