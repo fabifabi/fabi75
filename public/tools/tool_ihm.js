@@ -154,7 +154,3 @@ function $changeCSS(sel, newval) {
     document.head.appendChild(style);
 }
 
-document.addEventListener('DOMContentLoaded', function () {
-    if (init)
-        init();
-});
