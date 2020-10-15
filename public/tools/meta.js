@@ -16,14 +16,10 @@ function all(obj, tabexception, funproxy, propchange, propread) {
             obj[i] = funproxy(i, obj[i]);
             continue;
         }
-        if (typeof obj[i] === "function") {
-            Object.defineProperty(obj, i, {
-                set: function (newval) { propchange(i, obj[i], newval); },
-                get: function () { return propread(i, obj[i]); }
-            });
-            continue;
-        }
-
+        Object.defineProperty(obj, i, {
+            set: function (newval) { propchange(i, obj[i], newval); },
+            get: function () { return propread(i, obj[i]); }
+        });
     }
 }
 
