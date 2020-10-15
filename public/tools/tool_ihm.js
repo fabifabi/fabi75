@@ -1,4 +1,4 @@
-"use strict";
+
 function windowResize() {
     if (!isready)
         return;
