@@ -1,8 +1,9 @@
-var log = console.log;
+/*var log = console.log;
 var isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
 if (isSafari)
     log = function (t) { console.log(t); }
-
+*/
+"use strict";
 function windowResize() {
     if (!isready)
         return;
@@ -10,9 +11,9 @@ function windowResize() {
     var h = window.innerHeight;
     w = Math.min(w, 1000);
     h = Math.min(h, 1000);
-    ratio = w / h;
+    var ratio = w / h;
     if (isFn(resizeAll))
-        resizeAll();
+        resizeAll(ratio);
 }
 window.onresize = windowResize;
 
