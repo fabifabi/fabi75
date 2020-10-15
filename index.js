@@ -162,7 +162,7 @@ app.set('port', process.env.PORT || 3000);
 var options = {};
 var server = http.createServer(options, app);
 server.listen(app.get("port"));
-
+/*
 var wss = new WebSocket.Server({ port: app.get("port") });
 wss.on('connection', function connection(ws) {
   ws.on('message', function incoming(data) {
@@ -179,6 +179,6 @@ wss.on('connection', function connection(ws) {
       }
     });
   });
-});
+});*/
 
 console.log("Let's chat !");
