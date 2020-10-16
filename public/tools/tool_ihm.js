@@ -1,5 +1,5 @@
 
-function windowResize() {
+/*function windowResize() {
     if (!isready)
         return;
     var w = window.innerWidth;
@@ -11,6 +11,7 @@ function windowResize() {
         resizeAll(ratio);
 }
 window.onresize = windowResize;
+*/
 
 function openFullscreen() {
     var elem = document.documentElement;
