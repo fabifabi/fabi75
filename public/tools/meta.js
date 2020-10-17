@@ -9,7 +9,7 @@ function all(obj, tabexception, funproxy, propchange, propread) {
             continue;
         log(i + " : ", typeof obj[i]);
         if (typeof obj[i] === "object") {
-            all(obj[i], tabexception, funproxy, propproxy);
+            all(obj[i], tabexception, funproxy, propchange, propread);
             continue;
         }
         if (typeof obj[i] === "function") {
