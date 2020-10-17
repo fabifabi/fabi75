@@ -8,7 +8,6 @@ function all(obj, tabexception, funproxy, propchange, propread) {
                 continue;
             if (Array.isArray(obj[i]))
                 continue;
-            log(i + " : ", typeof obj[i]);
             if (typeof obj[i] === "object") {
                 all(obj[i], tabexception, funproxy, propchange, propread);
                 continue;
