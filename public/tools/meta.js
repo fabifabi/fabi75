@@ -23,7 +23,7 @@ function all(obj, tabexception, funproxy, propchange, propread) {
             });
         }
         catch (e) {
-            log(e);
+            log(i, " : ", e);
         }
 
     }
