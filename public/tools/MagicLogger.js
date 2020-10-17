@@ -320,151 +320,150 @@ if (typeof debug !== "undefined" && debug === true) {
 
 
     }
-
-    //alert("b.js");
-    function hop() {
-        console.log("hop");
+}
+//alert("b.js");
+function hop() {
+    console.log("hop");
+}
+/*
+var temp = setTimeout;   
+//eval("var setTimeout;");
+var setTimeout;
+setTimeout = function () { };
+ 
+setTimeout(hop, 100);
+window.setTimeout(hop, 50);
+//temp(hop, 50);
+//var aux = GlobalEventHandlers.onclick;
+//document.addEventListener("DOMContentLoaded", ready);
+ 
+var tempw = {};
+eval("var window;");
+window = tempw;
+var onclick2 = Window.prototype.onclick;
+ 
+Object.defineProperty(window, 'onclick', {
+    set: function (x) {
+        console.log("try to set on click in window!");
+        onclick2 = x;
     }
-    /*
-    var temp = setTimeout;   
-    //eval("var setTimeout;");
-    var setTimeout;
-    setTimeout = function () { };
-    
-    setTimeout(hop, 100);
-    window.setTimeout(hop, 50);
-    //temp(hop, 50);
-    //var aux = GlobalEventHandlers.onclick;
-    //document.addEventListener("DOMContentLoaded", ready);
-    
-    var tempw = {};
-    eval("var window;");
-    window = tempw;
-    var onclick2 = Window.prototype.onclick;
-    
-    Object.defineProperty(window, 'onclick', {
+});*/
+
+function alerte() { }
+/*var oldw = window;
+var tempw = {};
+eval("var window;");
+//window = tempw;*/
+//var onclick2 = window.onclick;
+/*
+Object.defineProperty(window, 'onclick2', {
+    set: function (x) {
+        window.onclick = x;
+        console.log("try to set on click in window!");
+        //        oldw.setAttribute("onclick")
+        //    Window.prototype.onclick = x;
+    }
+});*//*
+Object.defineProperty(window, 'onclick', {
+    set: function (x) {
+        console.log(x, "try to set on click in window!");
+        document.onclick = x;
+        //        oldw.setAttribute("onclick")
+        //    Window.prototype.onclick = x;
+    }
+});*/
+
+/*
+window.onclick = function (e) {
+    console.log("my onclick event!!");
+    this.onclickH.on.call(window, e);
+}*/
+
+
+//overrideOnWindowEvent("onclick");
+console.log("-----end");
+/*Document.prototype.createElement2 = Document.prototype.createElement;
+Document.prototype.createElement = function (txt) {
+    console.log(txt);
+    var res = document.createElement2(txt);
+    Object.defineProperty(res, 'onclick', {
         set: function (x) {
-            console.log("try to set on click in window!");
-            onclick2 = x;
+            //    console.log("try to set on click !");
         }
-    });*/
+    });
+    return res;
+};*/
 
-    function alerte() { }
-    /*var oldw = window;
-    var tempw = {};
-    eval("var window;");
-    //window = tempw;*/
-    //var onclick2 = window.onclick;
-    /*
-    Object.defineProperty(window, 'onclick2', {
-        set: function (x) {
-            window.onclick = x;
-            console.log("try to set on click in window!");
-            //        oldw.setAttribute("onclick")
-            //    Window.prototype.onclick = x;
+/*
+Object.defineProperty(document.body, 'onclick', {
+    set: function (x) {
+        console.log("try to set on click in body!");
+    }
+});*/
+
+
+/*
+var old = document;
+for (var i in document) {
+console.log(i, document[i]);
+eval("var " + i + ";");
+}
+*/
+
+function ready() {
+    /*  var temp2 = document;
+   
+       eval("var document={body:{onclick:0}};");
+       eval("var body;");
+       var document;
+       document.onclick = function () { }
+       document.body.onclick = function () { }*/
+    var clicks = document.querySelectorAll("[onclick]");
+    for (var i = 0; i < clicks.length; i++) {
+        console.log(clicks[i].getAttribute("onclick"));
+        clicks[i].setAttribute("onclick", "");
+    }
+
+    // Options for the observer (which mutations to observe)
+    const config = { attributeFilter: ["onclick"], attributes: true, childList: true, subtree: true };
+
+    // Callback function to execute when mutations are observed
+    const callback = function (mutationsList, observer) {
+        // Use traditional 'for loops' for IE 11
+        for (let mutation of mutationsList) {
+            console.log(mutation);
+            if (mutation.type === 'childList') {
+                console.log(mutation.target, mutation.addedNodes, 'A child node has been added or removed.');
+            }
+            else if (mutation.type === 'attributes') {
+                console.log('The ' + mutation.attributeName + ' attribute was modified.');
+            }
         }
-    });*//*
-    Object.defineProperty(window, 'onclick', {
-        set: function (x) {
-            console.log(x, "try to set on click in window!");
-            document.onclick = x;
-            //        oldw.setAttribute("onclick")
-            //    Window.prototype.onclick = x;
+        // observer.disconnect();
+        var clicks = document.querySelectorAll("[onclick]");
+        for (var i = 0; i < clicks.length; i++) {
+            //    clicks[i].setAttribute("onclick", "");
         }
-    });*/
+        // setTimeout(function () { observer.observe(document, config); }, 0);
+    };
 
-    /*
-    window.onclick = function (e) {
-        console.log("my onclick event!!");
-        this.onclickH.on.call(window, e);
-    }*/
+    // Create an observer instance linked to the callback function
+    const observer = new MutationObserver(callback);
 
-
-    //overrideOnWindowEvent("onclick");
-    console.log("-----end");
-    /*Document.prototype.createElement2 = Document.prototype.createElement;
+    // Start observing the target node for configured mutations
+    //   observer.observe(document, config);
+    Document.prototype.createElement2 = Document.prototype.createElement;
     Document.prototype.createElement = function (txt) {
         console.log(txt);
         var res = document.createElement2(txt);
         Object.defineProperty(res, 'onclick', {
             set: function (x) {
-                //    console.log("try to set on click !");
+                console.log("try to set on click !");
             }
         });
         return res;
-    };*/
+    };
 
-    /*
-    Object.defineProperty(document.body, 'onclick', {
-        set: function (x) {
-            console.log("try to set on click in body!");
-        }
-    });*/
+    //document.getElementById("div").setAttribute("onclick", function () { console.log("b"); });
 
-
-    /*
-    var old = document;
-    for (var i in document) {
-    console.log(i, document[i]);
-    eval("var " + i + ";");
-    }
-    */
-
-    function ready() {
-        /*  var temp2 = document;
-       
-           eval("var document={body:{onclick:0}};");
-           eval("var body;");
-           var document;
-           document.onclick = function () { }
-           document.body.onclick = function () { }*/
-        var clicks = document.querySelectorAll("[onclick]");
-        for (var i = 0; i < clicks.length; i++) {
-            console.log(clicks[i].getAttribute("onclick"));
-            clicks[i].setAttribute("onclick", "");
-        }
-
-        return;
-        // Options for the observer (which mutations to observe)
-        const config = { attributeFilter: ["onclick"], attributes: true, childList: true, subtree: true };
-
-        // Callback function to execute when mutations are observed
-        const callback = function (mutationsList, observer) {
-            // Use traditional 'for loops' for IE 11
-            for (let mutation of mutationsList) {
-                console.log(mutation);
-                if (mutation.type === 'childList') {
-                    console.log(mutation.target, mutation.addedNodes, 'A child node has been added or removed.');
-                }
-                else if (mutation.type === 'attributes') {
-                    console.log('The ' + mutation.attributeName + ' attribute was modified.');
-                }
-            }
-            // observer.disconnect();
-            var clicks = document.querySelectorAll("[onclick]");
-            for (var i = 0; i < clicks.length; i++) {
-                //    clicks[i].setAttribute("onclick", "");
-            }
-            // setTimeout(function () { observer.observe(document, config); }, 0);
-        };
-
-        // Create an observer instance linked to the callback function
-        const observer = new MutationObserver(callback);
-
-        // Start observing the target node for configured mutations
-        //   observer.observe(document, config);
-        Document.prototype.createElement2 = Document.prototype.createElement;
-        Document.prototype.createElement = function (txt) {
-            console.log(txt);
-            var res = document.createElement2(txt);
-            Object.defineProperty(res, 'onclick', {
-                set: function (x) {
-                    console.log("try to set on click !");
-                }
-            });
-            return res;
-        };
-
-        //document.getElementById("div").setAttribute("onclick", function () { console.log("b"); });
-    }
 }
