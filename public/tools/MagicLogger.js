@@ -1,12 +1,16 @@
 // read config
 //console.log(JSON.stringify(window.performance.timing));
-if (typeof debug !== "undefined" && debug === true) {
+window.onerror = function () { alert("syntax") };
+
+if (debug === true) {
+    window.beginAt = new Date().getTime();
     if (typeof logConfig === "undefined") {
         window.logConfig = {
             buffer: true,
             SendStatUrl: "",
-            format: "JSON",
+            formatExport: "JSON",
             event: true,
+            excludeHost: "fast",
             ExcludeEvent: [],
             logException: true,
             useWorker: false,
@@ -27,51 +31,36 @@ if (typeof debug !== "undefined" && debug === true) {
         }
     }
 
+    if (location.hostname.indexOf(logConfig.excludeHost) === -1) {
+        window.buffer = [];
 
-    window.onerror = function (errorMsg, url, lineNumber, column, errorObj) {
-        var s = errorObj.stack.split("\n");
-        var line = s[0].includes(":") ? s[0] : s[1]; // chrome put "error" on first line
-        var posdeb = line.lastIndexOf("/") + 1;
-        var now = line.substring(posdeb, line.indexOf(":", posdeb))
-        s.shift();
-        var aux = [];
-        for (var i = 0; i < s.length; i++) {
-            if (s[i].indexOf(now) === -1)
-                aux.push(s[i]);
-        }
-        if (aux.length === 0) {
-            alert("oups, inner error in MagicLogger,sorrrrry");
-            return;
-        }
-        log(aux);
-        var join = aux.join("\n");
-        alert(join);
-    }
-    ___run();
+        function fakeWorker() {
+            this.send = function (data) {
 
-    function fakeWorker() {
-        this.send = function (data) {
-
-        }
-    }
-
-    function composition(that) {
-        this.tab = [];
-        return function () {
-            for (var i = 0; i < tab.length; i++) {
-                tab[i].call(that, Array.prototype.slice.call(arguments));
             }
         }
-    }
 
-    // type, message, timestamp, 
+        function composition(that) {
+            this.tab = [];
+            return function () {
+                for (var i = 0; i < tab.length; i++) {
+                    tab[i].call(that, Array.prototype.slice.call(arguments));
+                }
+            }
+        }
 
-    function ___run() {
+        // type, message, timestamp, 
         var $idlog = false;
+        var $idlogError = false;
+        var $idSave = false;
         if (logConfig.display && logConfig.display.html && (typeof logConfig.display.html.id === "undefined")) {
-            var html = '<div id="___console" style="overflow: scroll; position: fixed;z-index: 1000;top:5%;right:5%;width: 25%;height: 25%;background-color: rgba(255, 255, 255, 0.3);border:2px solid black ;  border-radius: 10px;"></div>';
+            var html = '<div id="___main" style="overflow: scroll;opacity:0.7; position: fixed;z-index: 1000;bottom:5%;left:5%;width: 100%;height: 50%;background-color: rgba(255, 255, 255, 0.3);border:2px solid black ;  border-radius: 10px;"><a id="___saveJSON" download="log.json" >Download</a><div id="___json"></div><div id="___error" style="color:red"></div><div id="___console"></div>';
             document.write(html);
+
+            $idSave = document.getElementById("___saveJSON");
+            $idSave.href = URL.createObjectURL(new Blob([JSON.stringify(buffer)], { type: "application/json" }));
             $idlog = document.getElementById("___console");
+            $idlogError = document.getElementById("___error");
         }
         if (typeof logConfig.display.html.id !== "undefined")
             $idlog = logConfig.display.html.id;
@@ -87,55 +76,84 @@ if (typeof debug !== "undefined" && debug === true) {
         for (var i in console) {
             oldConsole[i] = console[i];
         }
-        window.log = function () {
-            {
-                var err = new Error();
-                var s = err.stack;
-                var l = s.split("/n");
-                var line = l[0].includes(":") ? l[1] : l[2]; // chrome put "error" on first line
-                var myarg = Array.prototype.slice.call(arguments);
-                //    oldConsole.log(line.trim());
-                for (var i = 0; i < myarg.length; i++) {
-                    oldConsole.table(myarg[i]);
-                    if ($idlog !== false) {
-                        $idlog.innerHTML = myarg[i] + "<br>" + $idlog.innerHTML;
-                    }
-                }
-            }
-        }
-        log("___run");
+        console.log("___run");
         // 1: redefine log
         if (logConfig.log) {
             function redefLog(name) {
                 return function () {
-                    if (logConfig.log.timeStamp)
+                    var data = {
+                        time: new Date(),
+                        sinceBegin:(new Date().getTime() - window.beginAt),
+                        type: name,
+                        stack: [],
+                        arg: []
+                    };
+                    if (logConfig.log.timeStamp) {
                         oldConsole.log("time", + new Date());
+                    }
                     if (logConfig.log.stack) {
                         var err = new Error();
                         var s = err.stack;
                         var l = s.split("\n");
-                        var line = l[0].includes(":") ? l[1] : l[2]; // chrome put "error" on first line
-                        oldConsole.log(line.trim());
+                        var res = [];
+                        for (var i = 0; i < l.length; i++) {
+                            var s=l[i];
+                            s=s.replace('"',"")
+                            s=s.replace("'","")
+                            s=s.replace(" at "," ")
+                            if (s === "Error" || s.length === 0)
+                                continue;
+                            if (s.indexOf("MagicLogger.js") === -1)
+                                res.push(s);
+                        }
+                        data.stack = res;
+                        oldConsole.log(res);
                     }
-                    var myarg = Array.prototype.slice.call(arguments);
-                    oldConsole.log(myarg);
+                    data.arg = Array.prototype.slice.call(arguments);
+                    oldConsole.log(data.arg);
                     if (name !== "error" || (logConfig.log && !logConfig.log.consoleErrorAsWarning)) {
-                        oldConsole[name].apply(null, myarg);
+                        oldConsole[name].apply(null, data.arg);
                     }
                     else {
-                        oldConsole["log"].apply(null, myarg);
+                        oldConsole["log"].apply(null, data.arg);
                     }
                     if ($idlog !== false) {
-                        var log = name;
-                        for (var i = 0; i < myarg.length; i++)
-                            log += "<br>" + myarg[i].toString();
-                        $idlog.innerHTML = log + $idlog.innerHTML;
+                        var parent = document.createElement("div");
+                        var indent = "";
+                        var log= data.arg[0]+"<br>";
+                        //log+=this.caller;
+                        var namefun=data.stack[0].substr(0,data.stack[0].indexOf("("));
+                        log += "from : " +namefun;
+                        log+="(";
+                        for (var i = 1; i < data.arg.length; i++){
+                            log += data.arg[i];
+                            if (i!==data.arg.length-1)
+                                log+=",";
+                        }
+                        log+=")<br>";
+                        for (var i = 1; i < data.stack.length; i++) {
+                            log += indent + data.stack[i]+"<br>";
+                            indent += "<span>&nbsp&nbsp&nbsp&nbsp&nbsp</span>";
+                        }
+                        parent.innerHTML = "<div style='border-style: solid;'>" + (data.time.getTime() - window.beginAt) + " : " + log + "</div>";
+                        if (name === "error") {
+                            $idlogError.prepend(parent);
+                            $idlogError.scrollTo(0, 0);
+                        }
+                        else {
+                            $idlog.prepend(parent);
+                            $idlog.scrollTo(0, 0);
+                        }
                     }
+                    buffer.push(data);
+                    $idSave.href = URL.createObjectURL(new Blob([JSON.stringify(buffer, null, "\t")], { type: "application/json" }));
                 }
             }
-            for (var i in console) {
-                oldConsole[i] = console[i];
-                console[i] = redefLog(i);
+            var overload = ["log", "error", "warning", "table", "dir", "dirxml"];
+            for (var i = 0; i < overload.length; i++) {
+                var now = overload[i];
+                oldConsole[now] = console[now];
+                console[now] = redefLog(now);
             }
         }
         // 2: handle on event of window
@@ -320,6 +338,11 @@ if (typeof debug !== "undefined" && debug === true) {
 
 
     }
+    window.log = console.log;
+    window.error = console.error;
+    window.onerror = function () {
+        error("syntaxe");
+    }
 }
 //alert("b.js");
 function hop() {
@@ -424,6 +447,7 @@ function ready() {
         clicks[i].setAttribute("onclick", "");
     }
 
+    return;
     // Options for the observer (which mutations to observe)
     const config = { attributeFilter: ["onclick"], attributes: true, childList: true, subtree: true };
 
@@ -465,5 +489,4 @@ function ready() {
     };
 
     //document.getElementById("div").setAttribute("onclick", function () { console.log("b"); });
-
 }

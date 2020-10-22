@@ -68,12 +68,10 @@ function getAjax(url, fun, err, progress) {
 }
 
 function getAjaxLS(url, fun, err, progress) {
-    if (!isPhone) {
         if (localStorage[url] !== undefined) {
             fun(localStorage[url]);
             return;
         }
-    }
     var r = new XMLHttpRequest();
     r.open("GET", url, true);
     r.onprogress = progress;
