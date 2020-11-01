@@ -1,4 +1,3 @@
-
 /*function windowResize() {
     if (!isready)
         return;
@@ -17,16 +16,13 @@ function openFullscreen() {
     var elem = document.documentElement;
     if (elem.requestFullscreen) {
         elem.requestFullscreen();
-    }
-    else if (elem.mozRequestFullScreen) {
+    } else if (elem.mozRequestFullScreen) {
         /* Firefox */
         elem.mozRequestFullScreen();
-    }
-    else if (elem.webkitRequestFullscreen) {
+    } else if (elem.webkitRequestFullscreen) {
         /* Chrome, Safari and Opera */
         elem.webkitRequestFullscreen();
-    }
-    else if (elem.msRequestFullscreen) {
+    } else if (elem.msRequestFullscreen) {
         /* IE/Edge */
         elem.msRequestFullscreen();
     }
@@ -36,16 +32,13 @@ function closeFullscreen() {
     var doc = document;
     if (doc.exitFullscreen) {
         doc.exitFullscreen();
-    }
-    else if (doc.mozCancelFullScreen) {
+    } else if (doc.mozCancelFullScreen) {
         /* Firefox */
         doc.mozCancelFullScreen();
-    }
-    else if (doc.webkitExitFullscreen) {
+    } else if (doc.webkitExitFullscreen) {
         /* Chrome, Safari and Opera */
         doc.webkitExitFullscreen();
-    }
-    else if (doc.msExitFullscreen) {
+    } else if (doc.msExitFullscreen) {
         /* IE/Edge */
         doc.msExitFullscreen();
     }
@@ -56,7 +49,7 @@ function getAjax(url, fun, err, progress) {
     var r = new XMLHttpRequest();
     r.open("GET", url, true);
     r.onprogress = progress;
-    r.onreadystatechange = function () {
+    r.onreadystatechange = function() {
         if (r.readyState !== 4)
             return;
         if (r.status === 200)
@@ -68,40 +61,39 @@ function getAjax(url, fun, err, progress) {
 }
 
 function getAjaxLS(url, fun, err, progress) {
-        if (localStorage[url] !== undefined) {
-            fun(localStorage[url]);
-            return;
-        }
+    if (localStorage[url] !== undefined) {
+        fun(localStorage[url]);
+        return;
+    }
     var r = new XMLHttpRequest();
     r.open("GET", url, true);
     r.onprogress = progress;
-    r.onreadystatechange = function () {
+    r.onreadystatechange = function() {
         if (r.readyState !== 4)
             return;
         if (r.status === 200) {
             localStorage[url] = r.responseText;
             fun(r.responseText);
-        }
-        else if (err)
+        } else if (err)
             err();
     };
     r.send();
 }
 
 function postAjax(url, data, success, progress) {
-    var params = typeof data === "string"
-        ? data
-        : Object.keys(data)
-            .map(function (k) {
-                return encodeURIComponent(k) + "=" + encodeURIComponent(data[k]);
-            })
-            .join("&");
-    var xhr = XMLHttpRequest
-        ? new XMLHttpRequest()
-        : new ActiveXObject("Microsoft.XMLHTTP");
+    var params = typeof data === "string" ?
+        data :
+        Object.keys(data)
+        .map(function(k) {
+            return encodeURIComponent(k) + "=" + encodeURIComponent(data[k]);
+        })
+        .join("&");
+    var xhr = XMLHttpRequest ?
+        new XMLHttpRequest() :
+        new ActiveXObject("Microsoft.XMLHTTP");
     xhr.onprogress = progress;
     xhr.open("POST", url);
-    xhr.onreadystatechange = function () {
+    xhr.onreadystatechange = function() {
         if (xhr.readyState > 3 && xhr.status === 200) {
             if (success !== undefined)
                 success(xhr.responseText);
@@ -114,9 +106,41 @@ function postAjax(url, data, success, progress) {
 }
 
 
-window.onerror = function (errorMsg, url, lineNumber, column, errorObj) {
+window.onerror = function(errorMsg, url, lineNumber, column, errorObj) {
     alert('Error: ' + errorMsg + ' Script: ' + url + ' Line: ' + lineNumber + ' Column: ' + column + ' StackTrace: ' + errorObj);
 };
+
+
+
+Node.$id = function(sel) {
+    return document.getElementById(sel);
+}
+
+Node.$class = function(sel) {
+    return document.getElementsByClassName(sel);
+}
+
+Node.$forAllEvent = function(sel, event, fun) {
+    var all = $all(sel);
+    for (var i = 0; i < all.length; i++) {
+        all[i][event] = fun.bind(all[i]);
+    }
+}
+
+Node.$forAllMap = function(sel, fun) {
+    var all = $all(sel);
+    for (var i = 0; i < all.length; i++) {
+        fun.call(all[i]);
+    }
+}
+
+Node.$sel = function(sel) {
+    return document.querySelector(sel);
+}
+
+Node.$all = function(sel) {
+    return document.querySelectorAll(sel);
+}
 
 function $id(sel) {
     return document.getElementById(sel);
@@ -147,9 +171,9 @@ function $sel(sel) {
 function $all(sel) {
     return document.querySelectorAll(sel);
 }
+
 function $changeCSS(sel, newval) {
     var style = document.createElement('style');
     style.innerHTML = sel + '{' + newval + '}';
     document.head.appendChild(style);
 }
-
