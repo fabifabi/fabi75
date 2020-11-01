@@ -112,34 +112,34 @@ window.onerror = function(errorMsg, url, lineNumber, column, errorObj) {
 
 
 
-Node.$id = function(sel) {
-    return document.getElementById(sel);
+Element.$id = function(sel) {
+    return getElementById(sel);
 }
 
-Node.$class = function(sel) {
-    return document.getElementsByClassName(sel);
+Element.$class = function(sel) {
+    return getElementsByClassName(sel);
 }
 
-Node.$forAllEvent = function(sel, event, fun) {
+Element.$forAllEvent = function(sel, event, fun) {
     var all = $all(sel);
     for (var i = 0; i < all.length; i++) {
         all[i][event] = fun.bind(all[i]);
     }
 }
 
-Node.$forAllMap = function(sel, fun) {
+Element.$forAllMap = function(sel, fun) {
     var all = $all(sel);
     for (var i = 0; i < all.length; i++) {
         fun.call(all[i]);
     }
 }
 
-Node.$sel = function(sel) {
-    return document.querySelector(sel);
+Element.$sel = function(sel) {
+    return querySelector(sel);
 }
 
-Node.$all = function(sel) {
-    return document.querySelectorAll(sel);
+Element.$all = function(sel) {
+    return querySelectorAll(sel);
 }
 
 function $id(sel) {
