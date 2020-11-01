@@ -113,33 +113,33 @@ window.onerror = function(errorMsg, url, lineNumber, column, errorObj) {
 
 
 Element.prototype.$id = function(sel) {
-    return getElementById(sel);
+    return this.getElementById(sel);
 }
 
 Element.prototype.$class = function(sel) {
-    return getElementsByClassName(sel);
+    return this.getElementsByClassName(sel);
 }
 
 Element.prototype.$forAllEvent = function(sel, event, fun) {
-    var all = $all(sel);
+    var all = this.$all(sel);
     for (var i = 0; i < all.length; i++) {
         all[i][event] = fun.bind(all[i]);
     }
 }
 
 Element.prototype.$forAllMap = function(sel, fun) {
-    var all = $all(sel);
+    var all = this.$all(sel);
     for (var i = 0; i < all.length; i++) {
         fun.call(all[i]);
     }
 }
 
 Element.prototype.$sel = function(sel) {
-    return querySelector(sel);
+    return this.querySelector(sel);
 }
 
 Element.prototype.$all = function(sel) {
-    return querySelectorAll(sel);
+    return this.querySelectorAll(sel);
 }
 
 function $id(sel) {
