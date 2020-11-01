@@ -112,33 +112,33 @@ window.onerror = function(errorMsg, url, lineNumber, column, errorObj) {
 
 
 
-Element.prototype.$id = function(sel) {
+ParentNode.prototype.$id = function(sel) {
     return getElementById(sel);
 }
 
-Element.prototype.$class = function(sel) {
+ParentNode.prototype.$class = function(sel) {
     return getElementsByClassName(sel);
 }
 
-Element.prototype.$forAllEvent = function(sel, event, fun) {
+ParentNode.prototype.$forAllEvent = function(sel, event, fun) {
     var all = $all(sel);
     for (var i = 0; i < all.length; i++) {
         all[i][event] = fun.bind(all[i]);
     }
 }
 
-Element.prototype.$forAllMap = function(sel, fun) {
+ParentNode.prototype.$forAllMap = function(sel, fun) {
     var all = $all(sel);
     for (var i = 0; i < all.length; i++) {
         fun.call(all[i]);
     }
 }
 
-Element.prototype.$sel = function(sel) {
+ParentNode.prototype.$sel = function(sel) {
     return querySelector(sel);
 }
 
-Element.prototype.$all = function(sel) {
+ParentNode.prototype.$all = function(sel) {
     return querySelectorAll(sel);
 }
 
