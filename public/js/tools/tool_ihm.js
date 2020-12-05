@@ -49,7 +49,7 @@ function getAjax(url, fun, err, progress) {
     var r = new XMLHttpRequest();
     r.open("GET", url, true);
     r.onprogress = progress;
-    r.onreadystatechange = function() {
+    r.onreadystatechange = function () {
         if (r.readyState !== 4)
             return;
         if (r.status === 200)
@@ -68,7 +68,7 @@ function getAjaxLS(url, fun, err, progress) {
     var r = new XMLHttpRequest();
     r.open("GET", url, true);
     r.onprogress = progress;
-    r.onreadystatechange = function() {
+    r.onreadystatechange = function () {
         if (r.readyState !== 4)
             return;
         if (r.status === 200) {
@@ -84,16 +84,16 @@ function postAjax(url, data, success, progress) {
     var params = typeof data === "string" ?
         data :
         Object.keys(data)
-        .map(function(k) {
-            return encodeURIComponent(k) + "=" + encodeURIComponent(data[k]);
-        })
-        .join("&");
+            .map(function (k) {
+                return encodeURIComponent(k) + "=" + encodeURIComponent(data[k]);
+            })
+            .join("&");
     var xhr = XMLHttpRequest ?
         new XMLHttpRequest() :
         new ActiveXObject("Microsoft.XMLHTTP");
     xhr.onprogress = progress;
     xhr.open("POST", url);
-    xhr.onreadystatechange = function() {
+    xhr.onreadystatechange = function () {
         if (xhr.readyState > 3 && xhr.status === 200) {
             if (success !== undefined)
                 success(xhr.responseText);
@@ -106,40 +106,52 @@ function postAjax(url, data, success, progress) {
 }
 
 
-window.onerror = function(errorMsg, url, lineNumber, column, errorObj) {
+window.onerror = function (errorMsg, url, lineNumber, column, errorObj) {
     alert('Error: ' + errorMsg + ' Script: ' + url + ' Line: ' + lineNumber + ' Column: ' + column + ' StackTrace: ' + errorObj);
 };
 
-
-
-Element.prototype.$id = function(sel) {
+Element.prototype.$id = function (sel) {
     return this.getElementById(sel);
 }
 
-Element.prototype.$class = function(sel) {
+Element.prototype.$class = function (sel) {
     return this.getElementsByClassName(sel);
 }
 
-Element.prototype.$forAllEvent = function(sel, event, fun) {
+Element.prototype.$forAllEvent = function (sel, event, fun) {
     var all = this.$all(sel);
     for (var i = 0; i < all.length; i++) {
         all[i][event] = fun.bind(all[i]);
     }
 }
 
-Element.prototype.$forAllMap = function(sel, fun) {
+Element.prototype.$forAllMap = function (sel, fun) {
     var all = this.$all(sel);
     for (var i = 0; i < all.length; i++) {
         fun.call(all[i]);
     }
 }
 
-Element.prototype.$sel = function(sel) {
+Element.prototype.$sel = function (sel) {
     return this.querySelector(sel);
 }
 
-Element.prototype.$all = function(sel) {
+Element.prototype.$all = function (sel) {
     return this.querySelectorAll(sel);
+}
+
+Element.prototype.appendDiv = function (str) {
+    var scr = document.createElement("div");
+    scr.innerHTML = str;
+    this.appendChild(scr);
+}
+
+function appendScript(str, dst, doc) {
+    if (!!doc) {
+        doc = document;
+    }
+    var scr = doc.createElement("script").innerHTML = str;
+    dst.appendChild(scr);
 }
 
 function $id(sel) {
@@ -172,8 +184,33 @@ function $all(sel) {
     return document.querySelectorAll(sel);
 }
 
-function $changeCSS(sel, newval) {
+function $changeCSS(sel, newval, doc) {
     var style = document.createElement('style');
     style.innerHTML = sel + '{' + newval + '}';
-    document.head.appendChild(style);
+    if (!!doc) {
+        doc.appendChild(style);
+    } else {
+        document.head.appendChild(style);
+    }
+}
+
+function recNode(node, fn) {
+    if (fn(node) === false)
+        return false;
+    for (let i = 0; i < node.childNodes.length; i++)
+        recNode(node.childNodes[i], fn)
+}
+
+function recElement(elm, fn) {
+    if (fn(elm) === false)
+        return false;
+    for (let i = 0; i < elm.children.length; i++)
+        recElement(elm.children[i], fn);
+}
+
+function makeID() {
+    recNode(document, function (node) {
+        if (node.id !== undefined)
+            window["$" + node.id] = node;
+    });
 }

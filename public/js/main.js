@@ -1,12 +1,21 @@
+makeID();
+
 var socket = io.connect("/");
 socket.on("connect", () => {
-    console.log(socket.id); // x8WIv7-mJelg7on_ALbx
+    console.log("socket id ", socket.id); // x8WIv7-mJelg7on_ALbx
     socket.emit("hop", { name: "hop" })
 });
 
 socket.on("disconnect", () => {
-    console.log(socket.id); // undefined
+    console.log("bye ", socket.id); // undefined
 });
+
+function notify(str) {
+    if (window.Notification && Notification.permission === "granted") {
+        var n = new Notification(str);
+    }
+}
+
 socket.on("message", function (event) {
     console.log(event)
     if (visible === false) {
@@ -14,34 +23,27 @@ socket.on("message", function (event) {
     }
     var html = $chat.innerHTML;
     var txt = event.data.split("¤ ");
-    if (window.Notification && Notification.permission === "granted") {
-        var n = new Notification(txt[0] + " : " + txt[1]);
-    }
-    html += txt[0] + " : " + txt[1];
+    var w = txt[0] + " : " + txt[1];
+    notify(w);
+    html += w;
     $chat.innerHTML = html + "<br>";
     $chat.scrollTop = 1000000;
     console.log(event.data);
 });
 
-var $chat = document.querySelector("#chat");
-var $text = document.querySelector("#text");
-var $main = document.querySelector("#main");
-var $login = document.querySelector("#login");
-var $name = document.querySelector("#name");
-var $notif = document.querySelector("#notif");
-var $bip = document.querySelector("#bip");
-/*
+
 $notif.addEventListener('click', function () {
-// Premièrement, vérifions que nous avons la permission de publier des notifications. Si ce n'est pas le cas,
-demandons la
-if (window.Notification && Notification.permission !== "granted") {
-Notification.requestPermission(function (status) {
-if (Notification.permission !== status) {
-Notification.permission = status;
-}
+    if (visible)
+        return;
+    if (window.Notification && Notification.permission !== "granted") {
+        Notification.requestPermission(function (status) {
+            if (Notification.permission !== status) {
+                Notification.permission = status;
+            }
+        });
+    }
 });
-}
-});*/
+
 var visible = true;
 window.onblur = function () {
     visible = false;
@@ -50,6 +52,7 @@ window.onfocus = function () {
     visible = true;
 }
 var user = "";
+
 $name.addEventListener("keyup", function (event) {
     if (event.key === "Enter") {
         user = $name.value;
@@ -59,9 +62,8 @@ $name.addEventListener("keyup", function (event) {
 });
 
 $text.addEventListener("keyup", function (event) {
-    socket.emit("message", user + "¤ " + $text.value);
     if (event.key === "Enter") {
-        socket.emit("message", user + "¤ " + $text.value);
+        socket.emit("message", { data: user + "¤ " + $text.value });
         old = $text.value;
         $text.value = "";
     }
@@ -69,6 +71,7 @@ $text.addEventListener("keyup", function (event) {
         $text.value = old;
     }
 });
+
 socket.on("message", function (event) {
     console.log(event)
     if (visible === false) {
@@ -76,40 +79,10 @@ socket.on("message", function (event) {
     }
     var html = $chat.innerHTML;
     var txt = event.data.split("¤ ");
-    if (window.Notification && Notification.permission === "granted") {
-        var n = new Notification(txt[0] + " : " + txt[1]);
-    }
-    html += txt[0] + " : " + txt[1];
+    var w = txt[0] + " : " + txt[1];
+    notify(w)
+    html += w;
     $chat.innerHTML = html + "<br>";
     $chat.scrollTop = 1000000;
     console.log(event.data);
 });
-socket.on("connect", function (event) {
-    console.log(event)
-    if (visible === false) {
-        bip.play();
-    }
-    var html = $chat.innerHTML;
-    var txt = ["hop", "hop"];//event.data.split("¤ ");
-    if (window.Notification && Notification.permission === "granted") {
-        var n = new Notification(txt[0] + " : " + txt[1]);
-    }
-    html += txt[0] + " : " + txt[1];
-    $chat.innerHTML = html + "<br>";
-    $chat.scrollTop = 1000000;
-});
-socket.on("connected", function (event) {
-    console.log(event)
-    if (visible === false) {
-        bip.play();
-    }
-    var html = $chat.innerHTML;
-    var txt = event.data.split("¤ ");
-    if (window.Notification && Notification.permission === "granted") {
-        var n = new Notification(txt[0] + " : " + txt[1]);
-    }
-    html += txt[0] + " : " + txt[1];
-    $chat.innerHTML = html + "<br>";
-    $chat.scrollTop = 1000000;
-});
-
