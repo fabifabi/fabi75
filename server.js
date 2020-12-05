@@ -22,4 +22,4 @@ http.listen(process.env.PORT, () => {
   });
 });
 
-console.log("http://localhost:" + app.get("port"))
+console.log("port: " + app.get("port"))

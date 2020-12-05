@@ -62,7 +62,7 @@ $name.addEventListener("keyup", function (event) {
 
 $text.addEventListener("keyup", function (event) {
     if (event.key === "Enter") {
-        socket.emit("message", { data: user + "¤ " + $text.value });
+        socket.emit("message", { type: "msg", txt: user + "¤ " + $text.value });
         old = $text.value;
         $text.value = "";
     }
