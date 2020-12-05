@@ -12,7 +12,7 @@ socket.on("disconnect", () => {
 
 function notify(str) {
     if (window.Notification && Notification.permission === "granted") {
-        var n = new Notification(str);
+        new Notification(str);
     }
 }
 
@@ -27,7 +27,6 @@ socket.on("message", function (event) {
     html += w;
     $chat.innerHTML = html + "<br>";
     $chat.scrollTop = 1000000;
-    console.log(event.data);
 });
 
 
