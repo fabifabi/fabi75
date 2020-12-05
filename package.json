@@ -6,9 +6,10 @@
     "anchorme": "^1.1.2",
     "express": "^4.15.2",
     "node-emoji": "^1.10.0",
-    "ws": "^7.2.0"
+    "socket.io": "^3.0.3",
+    "socket.io-client": "^3.0.3"
   },
   "scripts": {
-    "start": "node index.js"
+    "start": "nodemon server.js"
   }
 }
