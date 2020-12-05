@@ -69,9 +69,9 @@ try {
     exec("cd  temp")
     exec('git add .');
     exec('git commit -m ' + message);
-    // exec('git push heroku master');
-    // fs.mkdirSync(dst);
-    //  fs.mkdirSync(app);
+    exec('git push heroku master');
+    fs.mkdirSync(dst);
+    fs.mkdirSync(app);
 
 } catch (e) {
     // console.log(e);
