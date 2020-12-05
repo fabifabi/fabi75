@@ -70,8 +70,8 @@ try {
     exec('git add .');
     exec('git commit -m ' + message);
     exec('git push heroku master');
-    fs.mkdirSync(dst);
-    fs.mkdirSync(app);
+    fs.rmdirSync(dst);
+    fs.rmdirSync(app);
 
 } catch (e) {
     // console.log(e);
