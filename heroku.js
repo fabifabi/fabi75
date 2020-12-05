@@ -69,7 +69,7 @@ try {
     exec("cd  temp")
     exec('git add .');
     exec('git commit -m ' + message);
-    exec('git push heroku master');
+    // exec('git push heroku master');
     fs.rmdirSync(dst, { recursive: true });
     fs.rmdirSync(app, { recursive: true });
 
