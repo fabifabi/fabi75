@@ -22,7 +22,7 @@ socket.on("message", function (event) {
         bip.play();
     }
     var html = $chat.innerHTML;
-    var w = event.data.txt;
+    var w = event.txt;
     notify(w);
     html += w;
     $chat.innerHTML = html + "<br>";
@@ -77,10 +77,10 @@ socket.on("message", function (event) {
         bip.play();
     }
     var html = $chat.innerHTML;
-    var w = event.data.txt;
+    var w = event.txt;
     notify(w)
     html += w;
     $chat.innerHTML = html + "<br>";
     $chat.scrollTop = 1000000;
-    console.log(event.data);
+    console.log(event);
 });
