@@ -1,6 +1,6 @@
 makeID();
 
-var socket = io.connect("/");
+var socket = io.connect();
 socket.on("connect", () => {
     console.log("socket id ", socket.id); // x8WIv7-mJelg7on_ALbx
     socket.emit("hop", { name: "hop" })
