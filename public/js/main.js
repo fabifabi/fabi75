@@ -3,7 +3,7 @@ makeID();
 var socket = io.connect();
 socket.on("connect", () => {
     console.log("socket id ", socket.id); // x8WIv7-mJelg7on_ALbx
-    socket.emit("hop", { name: "hop" })
+    socket.emit("hop", { type: "msg", txt: "hop" })
 });
 
 socket.on("disconnect", () => {
@@ -22,8 +22,7 @@ socket.on("message", function (event) {
         bip.play();
     }
     var html = $chat.innerHTML;
-    var txt = event.data.split("¤ ");
-    var w = txt[0] + " : " + txt[1];
+    var w = event.data.txt;
     notify(w);
     html += w;
     $chat.innerHTML = html + "<br>";
@@ -78,8 +77,7 @@ socket.on("message", function (event) {
         bip.play();
     }
     var html = $chat.innerHTML;
-    var txt = event.data.split("¤ ");
-    var w = txt[0] + " : " + txt[1];
+    var w = event.data.txt;
     notify(w)
     html += w;
     $chat.innerHTML = html + "<br>";
