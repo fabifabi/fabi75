@@ -69,17 +69,3 @@ $text.addEventListener("keyup", function (event) {
         $text.value = old;
     }
 });
-
-socket.on("message", function (event) {
-    console.log(event)
-    if (visible === false) {
-        bip.play();
-    }
-    var html = $chat.innerHTML;
-    var w = event.txt;
-    notify(w)
-    html += w;
-    $chat.innerHTML = html + "<br>";
-    $chat.scrollTop = 1000000;
-    console.log(event);
-});
