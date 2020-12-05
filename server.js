@@ -14,7 +14,7 @@ http.listen(process.env.PORT, () => {
   var io = require('socket.io')(http);
   io.on('connection', (socket) => {
     console.log('a user connected');
-    io.emit("message", { data: "all¤ Hi." });
+    io.emit("message", { type: "txt", txt: "all¤ Hi." });
     socket.on("message", data => {
       console.log(data);
       io.emit("message", data);
