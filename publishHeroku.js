@@ -4,11 +4,11 @@ let path = require("path");
 
 
 var myArgs = process.argv.slice(2);
-console.log('myArgs: ', myArgs);
 if (myArgs.length === 0)
     myArgs.push("fabi75");
 
 let app = myArgs[0];
+console.log('app: ', app);
 
 
 try {
@@ -69,9 +69,9 @@ try {
     exec("cd  temp")
     exec('git add .');
     exec('git commit -m ' + message);
-    exec('git push heroku master');
-    fs.mkdirSync(dst);
-    fs.mkdirSync(app);
+    // exec('git push heroku master');
+    // fs.mkdirSync(dst);
+    //  fs.mkdirSync(app);
 
 } catch (e) {
     // console.log(e);
