@@ -8,6 +8,12 @@ var log = console.log;
 
 app.use(express.static(__dirname + "/public"));
 app.set('port', process.env.PORT || 3000);
+/*
+app.get('/lisboa', function (req, res) {
+  log(req.query)
+  res.send(req.query)
+})*/
+
 var options = {};
 http.listen(process.env.PORT, () => {
   console.log("listening ws *: ", app.get("port"));

@@ -6,6 +6,7 @@
     "anchorme": "^1.1.2",
     "express": "^4.15.2",
     "node-emoji": "^1.10.0",
+    "nodemon": "^2.0.7",
     "socket.io": "^3.0.3",
     "socket.io-client": "^3.0.3"
   },
