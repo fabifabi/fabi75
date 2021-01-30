@@ -14,12 +14,24 @@ var tab = [];
 
 app.get('/lisboa', function (req, res) {
   log(req.query)
-  tab.push(req.query)
+  var obj = req.query;
+  tab.push({ from: obj.adress, txt: obj.body, at: obj.date })
+  res.send(req.query)
+})
+
+app.get('/clean', function (req, res) {
+  log(req.query)
+  tab = [];
   res.send(req.query)
 })
 
 app.get('/Menu', function (req, res) {
-  res.send(JSON.stringify(tab));
+  var txt = "";
+  for (var i = 0; i < tab.length; i++) {
+    var l = tab[i];
+    txt += "From : " + l.from + " at " + l.at + " say :" + l.txt + "<br>";
+  }
+  res.send(txt);
 })
 
 var options = {};
