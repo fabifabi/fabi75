@@ -13,7 +13,7 @@ app.set('port', process.env.PORT || 3000);
 var tab = [];
 
 app.get('/lisboa', function (req, res) {
-  log(req.query.res)
+  log(req.query)
   tab.push(req.query.res)
   res.send(req.query)
 })
