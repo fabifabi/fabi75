@@ -14,7 +14,7 @@ var tab = [];
 
 app.get('/lisboa', function (req, res) {
   log(req.query)
-  tab.push(req.query.res)
+  tab.push(req.query)
   res.send(req.query)
 })
 
