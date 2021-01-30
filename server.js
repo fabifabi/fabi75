@@ -10,13 +10,20 @@ app.use(express.static(__dirname + "/public"));
 
 app.set('port', process.env.PORT || 3000);
 
+var tab = [];
+
 app.get('/lisboa', function (req, res) {
   log(req.query)
+  tab.push(req.query)
   res.send(req.query)
 })
 
+app.get('/Menu', function (req, res) {
+  res.send(JSON.stringify(tab));
+})
+
 var options = {};
-http.listen(process.env.PORT, () => {
+http.listen(app.get("port"), () => {
   console.log("listening ws *: ", app.get("port"));
   var io = require('socket.io')(http);
   io.on('connection', (socket) => {
