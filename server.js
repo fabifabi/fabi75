@@ -14,8 +14,8 @@ var tab = [];
 
 app.get('/lisboa', function (req, res) {
   log(req.query)
-  var obj = req.query;
-  tab.push({ from: obj.adress, txt: obj.body, at: obj.date })
+  var obj = JSON.parse(req.query);
+  tab.push({ from: obj.address, txt: obj.body, at: obj.date })
   res.send(req.query)
 })
 
