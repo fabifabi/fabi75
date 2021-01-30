@@ -11,11 +11,20 @@ app.use(express.static(__dirname + "/public"));
 app.set('port', process.env.PORT || 3000);
 
 var tab = [];
+var resto = [];
 
 app.get('/lisboa', function (req, res) {
   log(req.query)
   var obj = JSON.parse(req.query.res);
-  tab.push({ from: obj.address, txt: obj.body, at: new Date(obj.date) })
+  if (obj.body.indexOf("create ") === 0) {
+    var all = obj.body.split(" ")
+    all.unshift();
+    var nom = all.join("")
+    resto.push({ tel: obj.address, name: nom })
+  }
+  else {
+    tab.push({ from: obj.address, txt: obj.body, at: new Date(obj.date) })
+  }
   res.send(req.query)
 })
 
@@ -29,7 +38,7 @@ app.get('/menu', function (req, res) {
   var txt = "";
   for (var i = 0; i < tab.length; i++) {
     var l = tab[i];
-    txt += "From : " + l.from + " at " + l.at + " say :" + l.txt + "<br>";
+    txt += "From : " + l.from + " at " + l.at.toLocateDate() + " say :" + l.txt + "<br>";
   }
   res.send(txt);
 })
