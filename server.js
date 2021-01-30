@@ -25,7 +25,7 @@ app.get('/clean', function (req, res) {
   res.send(req.query)
 })
 
-app.get('/Menu', function (req, res) {
+app.get('/menu', function (req, res) {
   var txt = "";
   for (var i = 0; i < tab.length; i++) {
     var l = tab[i];
