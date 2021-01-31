@@ -33,13 +33,13 @@ async function write(all) {
     await allDB.insertOne({ name: "all", data: JSON.stringify(all) });
 }
 
-var all = {
-    tab: {},
-    resto: {}
-};
 
 
 async function get() {
+    var all = {
+        tab: {},
+        resto: {}
+    };
     var all2 = await allDB.findOne({ name: "all" });
     log(all2)
     if (all2 !== null)
