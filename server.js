@@ -60,7 +60,7 @@ app.get('/menu', function (req, res) {
   all = getAll();
 
   var txt = "<div class='title'>Today : </div><br>";
-  if (all.tab[key] !== undefined) {
+  if (all.tab[key]) {
     for (var i = 0; i < all.tab[key].length; i++) {
       var l = all.tab[key][i];
       txt += "<div class='Name'>" + l.from + "</div><br>"
