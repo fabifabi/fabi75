@@ -42,7 +42,7 @@ app.get('/lisboa', function (req, res) {
         if (all.tab[key] === undefined)
           all.tab[key] = { menu: [] };
         all.tab[key].menu.push({ from: all.resto[obj.address], txt: obj.body.split(".") });
-        log(all, "ici")
+        log(JSON.stringify(all), "ici")
         await writeAll(all)
         console.dir(all);
       }
