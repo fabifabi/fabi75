@@ -42,7 +42,7 @@ app.get('/lisboa', function (req, res) {
         if (!all.tab[key])
           all.tab[key] = [];
         all.tab[key].push({ a: "aa" });//{ from: all.resto[obj.address], txt: obj.body.split(".") });
-        log(all)
+        log(all, "ici")
         await writeAll(all)
         console.dir(all);
       }
