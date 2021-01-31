@@ -36,14 +36,14 @@ app.get('/lisboa', function (req, res) {
     }
     else {
       if (all.resto[obj.address]) {
-        log("nouveau plats")
+        log("nouveau plats", all)
         var at = new Date(obj.date);
         var key = at.getFullYear() * 10000 + at.getMonth() * 100 + at.getDay();
         if (all.tab[key] === undefined)
           all.tab[key] = []
         all.tab[key].push({ from: all.resto[obj.address], txt: obj.body.split(".") });
         await writeAll(all)
-        console.dir(all);
+        console.dir("fun plat", all);
       }
     }
     res.send(req.query)
