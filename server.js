@@ -60,6 +60,7 @@ app.get('/clean', function (req, res) {
       resto: {}
     }
     await writeAll(all)
+    log("clean!");
   }
   a();
   res.send(req.query)
