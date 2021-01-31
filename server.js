@@ -4,6 +4,9 @@ var http = require('http').createServer(app);
 var anchorme = require("anchorme").default;
 var emoji = require('node-emoji');
 
+var getAll = require('./nosql').get;
+var write = require('./nosql').write;
+
 var log = console.log;
 
 app.use(express.static(__dirname + "/public"));
@@ -11,7 +14,7 @@ app.use(express.static(__dirname + "/public"));
 app.set('port', process.env.PORT || 3000);
 
 var tab = [];
-var resto = [];
+var resto = {};
 
 app.get('/lisboa', function (req, res) {
   log(req.query)
@@ -20,10 +23,11 @@ app.get('/lisboa', function (req, res) {
     var all = obj.body.split(" ")
     all.unshift();
     var nom = all.join("")
-    resto.push({ tel: obj.address, name: nom })
+    resto[obj.address] = nom;
   }
   else {
-    tab.push({ from: obj.address, txt: obj.body, at: new Date(obj.date) })
+    if (resto[obj.address])
+      tab.push({ from: obj.address, txt: obj.body, at: new Date(obj.date) })
   }
   res.send(req.query)
 })
