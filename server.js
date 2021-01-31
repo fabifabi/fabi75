@@ -29,7 +29,8 @@ app.get('/lisboa', function (req, res) {
       body.unshift();
       var nom = all.join("")
       all.resto[obj.address] = nom;
-      writeAll(all);
+      log("create ", all)
+      await writeAll(all);
     }
     else {
       if (all.resto[obj.address]) {
@@ -38,7 +39,7 @@ app.get('/lisboa', function (req, res) {
         if (all.tab[key] === undefined)
           all.tab[key] = []
         all.tab[key].push({ from: all.resto[obj.address], txt: obj.body.split(".") });
-        writeAll(all)
+        await writeAll(all)
       }
     }
     res.send(req.query)
