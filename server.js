@@ -29,7 +29,7 @@ app.get('/lisboa', function (req, res) {
     if (obj.body.toLowerCase().indexOf("create ") === 0) {
       var body = obj.body.split(" ")
       body.unshift();
-      var nom = all.join("")
+      var nom = body.join("")
       all.resto[obj.address] = nom;
       log("create ", all)
       await writeAll(all);
