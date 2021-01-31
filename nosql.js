@@ -31,7 +31,7 @@ let allDB;
 
 async function write(all) {
     log("write: ", all);
-    await allDB.insertOne({ name: "all", data: JSON.stringify(all) });
+    await allDB.insertOne({ _id: 1, name: "all", data: JSON.stringify(all) });
 }
 
 
@@ -41,7 +41,7 @@ async function get() {
         tab: {},
         resto: {}
     };
-    var all2 = await allDB.findOne({ name: "all" });
+    var all2 = await allDB.findOne({ _id: 1 });
     log(all2)
     if (all2 !== null)
         all = JSON.parse(all2.data);
