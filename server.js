@@ -36,6 +36,7 @@ app.get('/lisboa', function (req, res) {
     }
     else {
       if (all.resto[obj.address]) {
+        log("nouveau plats")
         var at = new Date(obj.date);
         var key = at.getFullYear() * 10000 + at.getMonth() * 100 + at.getDay();
         if (all.tab[key] === undefined)
