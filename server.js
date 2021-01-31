@@ -40,8 +40,8 @@ app.get('/lisboa', function (req, res) {
         var at = new Date(obj.date);
         var key = at.getFullYear() * 10000 + at.getMonth() * 100 + at.getDay();
         if (!all.tab[key])
-          all.tab[key] = []
-        all.tab[key].push({ from: all.resto[obj.address], txt: obj.body.split(".") });
+          all.tab[key] = [];
+        all.tab[key].push("aa");//{ from: all.resto[obj.address], txt: obj.body.split(".") });
         log(all)
         await writeAll(all)
         console.dir(all);
