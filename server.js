@@ -20,7 +20,7 @@ var all = {
 };
 
 app.get('/lisboa', function (req, res) {
-  getAll();
+  all = await getAll();
   log(req.query)
   var obj = JSON.parse(req.query.res);
   if (obj.body.toLowerCase().indexOf("create ") === 0) {
@@ -58,13 +58,13 @@ app.get('/menu', function (req, res) {
 
   var at = new Date(Date.now());
   var key = at.getFullYear() * 10000 + at.getMonth() * 100 + at.getDay();
-  all = getAll();
+  all = await getAll();
 
   var txt = "<div class='title'>Today : </div><br>";
   log(key)
   log(all)
   log(all.tab[key])
-  if (!!all.tab[key]) {
+  if (all.tab[key]) {
     for (var i = 0; i < all.tab[key].length; i++) {
       var l = all.tab[key][i];
       txt += "<div class='Name'>" + l.from + "</div><br>"
