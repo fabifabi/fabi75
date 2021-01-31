@@ -20,27 +20,30 @@ var all = {
 };
 
 app.get('/lisboa', function (req, res) {
-  all = await getAll();
-  log(req.query)
-  var obj = JSON.parse(req.query.res);
-  if (obj.body.toLowerCase().indexOf("create ") === 0) {
-    var body = obj.body.split(" ")
-    body.unshift();
-    var nom = all.join("")
-    all.resto[obj.address] = nom;
-    writeAll(all);
-  }
-  else {
-    if (all.resto[obj.address]) {
-      var at = new Date(obj.date);
-      var key = at.getFullYear() * 10000 + at.getMonth() * 100 + at.getDay();
-      if (all.tab[key] === undefined)
-        all.tab[key] = []
-      all.tab[key].push({ from: all.resto[obj.address], txt: obj.body.split(".") });
-      writeAll(all)
+  async function a() {
+    all = await getAll();
+    log(req.query)
+    var obj = JSON.parse(req.query.res);
+    if (obj.body.toLowerCase().indexOf("create ") === 0) {
+      var body = obj.body.split(" ")
+      body.unshift();
+      var nom = all.join("")
+      all.resto[obj.address] = nom;
+      writeAll(all);
     }
+    else {
+      if (all.resto[obj.address]) {
+        var at = new Date(obj.date);
+        var key = at.getFullYear() * 10000 + at.getMonth() * 100 + at.getDay();
+        if (all.tab[key] === undefined)
+          all.tab[key] = []
+        all.tab[key].push({ from: all.resto[obj.address], txt: obj.body.split(".") });
+        writeAll(all)
+      }
+    }
+    res.send(req.query)
   }
-  res.send(req.query)
+  a();
 })
 
 app.get('/clean', function (req, res) {
@@ -55,28 +58,31 @@ app.get('/clean', function (req, res) {
 var log = console.log;
 
 app.get('/menu', function (req, res) {
+  async function a() {
 
-  var at = new Date(Date.now());
-  var key = at.getFullYear() * 10000 + at.getMonth() * 100 + at.getDay();
-  all = await getAll();
+    var at = new Date(Date.now());
+    var key = at.getFullYear() * 10000 + at.getMonth() * 100 + at.getDay();
+    all = await getAll();
 
-  var txt = "<div class='title'>Today : </div><br>";
-  log(key)
-  log(all)
-  log(all.tab[key])
-  if (all.tab[key]) {
-    for (var i = 0; i < all.tab[key].length; i++) {
-      var l = all.tab[key][i];
-      txt += "<div class='Name'>" + l.from + "</div><br>"
-      for (var j = 0; j < l.txt.length; j++) {
-        txt += "<div class='Plat'>" + l.txt[j] + " : " + l.txt[j + 1] + "</div><br>";
-        j++;
+    var txt = "<div class='title'>Today : </div><br>";
+    log(key)
+    log(all)
+    log(all.tab[key])
+    if (all.tab[key]) {
+      for (var i = 0; i < all.tab[key].length; i++) {
+        var l = all.tab[key][i];
+        txt += "<div class='Name'>" + l.from + "</div><br>"
+        for (var j = 0; j < l.txt.length; j++) {
+          txt += "<div class='Plat'>" + l.txt[j] + " : " + l.txt[j + 1] + "</div><br>";
+          j++;
+        }
+        l.txt + "<br>";
       }
-      l.txt + "<br>";
     }
+    var out = tpl.replace("%%insert%%", txt)
+    res.send(out);
   }
-  var out = tpl.replace("%%insert%%", txt)
-  res.send(out);
+  a();
 })
 
 var options = {};
