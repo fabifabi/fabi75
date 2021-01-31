@@ -23,7 +23,7 @@ app.get('/lisboa', function (req, res) {
   getAll();
   log(req.query)
   var obj = JSON.parse(req.query.res);
-  if (obj.body.indexOf("create ") === 0) {
+  if (obj.body.toLowerCase().indexOf("create ") === 0) {
     var body = obj.body.split(" ")
     body.unshift();
     var nom = all.join("")
