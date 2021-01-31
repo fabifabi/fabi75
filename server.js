@@ -54,9 +54,11 @@ app.get('/clean', function (req, res) {
 })
 
 app.get('/menu', function (req, res) {
+
   var at = Date.now();
   var key = at.getFullYear * 10000 + at.getMonth * 100 + at.getDay;
   all = getAll();
+
   var txt = "<div class='title'>Today : </div><br>";
   if (all.tab[key] !== undefined) {
     for (var i = 0; i < all.tab[key].length; i++) {
@@ -69,7 +71,8 @@ app.get('/menu', function (req, res) {
       l.txt + "<br>";
     }
   }
-  res.send(txt);
+  var out = tpl.replace("%%insert%%", txt)
+  res.send(out);
 })
 
 var options = {};
@@ -85,5 +88,9 @@ http.listen(app.get("port"), () => {
     });
   });
 });
+
+var fs = require("fs");
+
+var tpl = fs.readFileSync("public/menu.tpl.html").toString();
 
 console.log("port: " + app.get("port"))
