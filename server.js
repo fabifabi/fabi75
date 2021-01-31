@@ -20,10 +20,12 @@ var all = {
 };
 
 app.get('/lisboa', function (req, res) {
+  log(req.query.res)
   async function a() {
     all = await getAll();
     log(req.query)
     var obj = JSON.parse(req.query.res);
+    log(obj)
     if (obj.body.toLowerCase().indexOf("create ") === 0) {
       var body = obj.body.split(" ")
       body.unshift();
