@@ -91,6 +91,6 @@ http.listen(app.get("port"), () => {
 
 var fs = require("fs");
 
-var tpl = fs.readFileSync("public/menu.tpl.html").toString();
+var tpl = fs.readFileSync("./public/menu.tpl.html").toString();
 
 console.log("port: " + app.get("port"))
