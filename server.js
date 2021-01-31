@@ -79,8 +79,8 @@ app.get('/menu', function (req, res) {
     log(all)
     log(all.tab[key])
     if (all.tab[key]) {
-      for (var i = 0; i < all.tab[key].menu.length; i++) {
-        var l = all.tab[key].menu[i];
+      for (var i in all.tab[key]) {
+        var l = all.tab[key][i];
         txt += "<div class='Name'>" + l.from + "</div><br>"
         for (var j = 0; j < l.txt.length; j++) {
           if (l.txt[j].trim().length > 0) {
