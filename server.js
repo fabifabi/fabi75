@@ -33,7 +33,7 @@ app.get('/lisboa', function (req, res) {
   else {
     if (all.resto[obj.address]) {
       var at = new Date(obj.date);
-      var key = at.getFullYear * 10000 + at.getMonth * 100 + at.getDay;
+      var key = at.getFullYear() * 10000 + at.getMonth() * 100 + at.getDay();
       if (all.tab[key] === undefined)
         all.tab[key] = []
       all.tab[key].push({ from: all.resto[obj.address], txt: obj.body.split(".") });
@@ -52,15 +52,19 @@ app.get('/clean', function (req, res) {
   writeAll(all)
   res.send(req.query)
 })
+var log = console.log;
 
 app.get('/menu', function (req, res) {
 
   var at = Date.now();
-  var key = at.getFullYear * 10000 + at.getMonth * 100 + at.getDay;
+  var key = at.getFullYear() * 10000 + at.getMonth() * 100 + at.getDay();
   all = getAll();
 
   var txt = "<div class='title'>Today : </div><br>";
-  if (all.tab[key]) {
+  log(key)
+  log(all)
+  log(all.tab[key])
+  if (!!all.tab[key]) {
     for (var i = 0; i < all.tab[key].length; i++) {
       var l = all.tab[key][i];
       txt += "<div class='Name'>" + l.from + "</div><br>"
