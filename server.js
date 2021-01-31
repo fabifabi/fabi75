@@ -41,7 +41,7 @@ app.get('/lisboa', function (req, res) {
         var key = at.getFullYear() * 10000 + at.getMonth() * 100 + at.getDay();
         if (!all.tab[key])
           all.tab[key] = [];
-        all.tab[key].push("aa");//{ from: all.resto[obj.address], txt: obj.body.split(".") });
+        all.tab[key].push({ a: "aa" });//{ from: all.resto[obj.address], txt: obj.body.split(".") });
         log(all)
         await writeAll(all)
         console.dir(all);
