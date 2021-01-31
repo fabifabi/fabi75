@@ -31,7 +31,8 @@ let allDB;
 
 async function write(all) {
     log("write: ", all);
-    await allDB.insertOne({ _id: 1, name: "all", data: JSON.stringify(all) });
+
+    await allDB.updateOne({ _id: 1 }, { $set: { data: JSON.stringify(all) } });
 }
 
 
