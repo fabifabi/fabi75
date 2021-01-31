@@ -40,8 +40,8 @@ app.get('/lisboa', function (req, res) {
         var at = new Date(obj.date);
         var key = at.getFullYear() * 10000 + at.getMonth() * 100 + at.getDay();
         if (all.tab[key] === undefined)
-          all.tab[key] = { menu: [] };
-        all.tab[key].menu.push({ from: all.resto[obj.address], txt: obj.body.split(".") });
+          all.tab[key] = {};
+        all.tab[key][all.resto[obj.address]] = { from: all.resto[obj.address], txt: obj.body.split(".") };
         log(JSON.stringify(all), "ici")
         await writeAll(all)
         console.dir(all);
