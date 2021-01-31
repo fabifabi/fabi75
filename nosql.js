@@ -45,7 +45,7 @@ async function get() {
     log(all2)
     if (all2 !== null)
         all = JSON.parse(all2.data);
-    log(get, all)
+    log("get", all)
     return all;
 }
 
