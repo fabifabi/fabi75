@@ -53,12 +53,15 @@ app.get('/lisboa', function (req, res) {
 })
 
 app.get('/clean', function (req, res) {
-  log(req.query)
-  var all = {
-    tab: {},
-    resto: {}
+  async function a() {
+    log(req.query)
+    var all = {
+      tab: {},
+      resto: {}
+    }
+    await writeAll(all)
   }
-  writeAll(all)
+  a();
   res.send(req.query)
 })
 var log = console.log;
