@@ -86,7 +86,7 @@ app.get('/menu', function (req, res) {
           txt += "<div class='Plat'>" + l.txt[j] + " : " + l.txt[j + 1] + "</div><br>";
           j++;
         }
-        l.txt + "<br>";
+        txt + "<br>";
       }
     }
     var out = tpl.replace("%%insert%%", txt)
