@@ -38,6 +38,7 @@ app.get('/lisboa', function (req, res) {
       if (all.resto[obj.address]) {
         log("nouveau plats", all)
         var at = new Date(obj.date);
+        log("at", at);
         var key = at.getFullYear() * 10000 + at.getMonth() * 100 + at.getDay();
         log("key", key)
         if (all.tab[key] === undefined)
