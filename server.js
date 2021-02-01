@@ -25,7 +25,7 @@ app.get('/lisboa', function (req, res) {
     var all = await getAll();
     log(req.query)
     var obj = JSON.parse(req.query.res);
-    log(obj)
+    log("obj :", obj)
     if (obj.body.toLowerCase().indexOf("create ") === 0) {
       var body = obj.body.split(" ")
       body.shift();
@@ -74,8 +74,7 @@ app.get('/menu', function (req, res) {
     var key = at.getFullYear() * 10000 + at.getMonth() * 100 + at.getDay();
     all = await getAll();
 
-    var txt = "<div class='title'>Hoke ! : </div><br>";
-    txt += "<div class='title'>Platos de Dias </div><br>";
+    var txt = "<div class='title'>Platos de Dias </div><br>";
     log(key)
     log(all)
     log(all.tab[key])
