@@ -44,7 +44,7 @@ async function get() {
     };
     var all2 = await allDB.findOne({ _id: 1 });
     log(all2)
-    if (all2 !== null)
+    if (all2 !== undefined)
         all = JSON.parse(all2.data);
     log("get", all)
     return all;
