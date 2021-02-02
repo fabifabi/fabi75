@@ -43,7 +43,7 @@ app.get('/lisboa', function (req, res) {
         log("key", key)
         if (all.tab[key] === undefined)
           all.tab[key] = {};
-        all.tab[key][all.resto[obj.address]] = { from: all.resto[obj.address], txt: obj.body.split(".") };
+        all.tab[key][all.resto[obj.address]] = { from: all.resto[obj.address], txt: obj.body.split(",") };
         log(JSON.stringify(all), "ici")
         await writeAll(all)
         console.dir(all);
