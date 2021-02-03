@@ -96,6 +96,11 @@ app.get('/menu', function (req, res) {
         }
         txt + "<br>";
       }
+    } else {
+      for (var i in resto) {
+        txt += "<div class='Name'>No restaurante " + resto[i] + "</div><br>"
+        txt += "<div class='Plat Empty'>Este restaurante ainda não foi publicado :(</div><br>";
+      }
     }
     var out = tpl.replace("%%insert%%", txt)
     res.send(out);
