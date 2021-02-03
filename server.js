@@ -98,7 +98,7 @@ app.get('/menu', function (req, res) {
       }
     } else {
       for (var i in all.resto) {
-        txt += "<div class='Name'>No restaurante " + resto[i] + "</div><br>"
+        txt += "<div class='Name'>No restaurante " + all.resto[i] + "</div><br>"
         txt += "<div class='Plat Empty'>Este restaurante ainda não foi publicado :(</div><br>";
       }
     }
