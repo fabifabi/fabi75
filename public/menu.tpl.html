@@ -4,7 +4,6 @@
     <style>
         body {
             background-image: url("fond.jpeg");
-            background-color: rgba(127, 127, 127, 0.4);
             font-weight: bolder;
         }
 
@@ -16,12 +15,39 @@
         .title {
             font-size: larger;
         }
+
+        .gauche {
+            background-image: url("fond.jpeg");
+            left: 0%;
+            top: 0%;
+            position: absolute;
+            width: 15%;
+        }
+
+        .menu {
+            left: 20%;
+            top: 0%;
+            position: absolute;
+            width: 70%;
+        }
+
+        .droite {
+            right: 0%;
+            top: 0%;
+            position: absolute;
+            width: 15%;
+            background-image: url("fond.jpeg");
+        }
     </style>
 
 </head>
 
 <body>
-    %%insert%%
+    <div id="gauche"> </div>
+    <div id="menu">
+        %%insert%%
+    </div>
+    <div id="droite"> </div>
 </body>
 
 </html>
