@@ -71,8 +71,8 @@
         for (var i in all.resto) {
             nb++
         }
-        $forAllMap(".Name", function (div) {
-            div.style.backgroundColor = "white";
+        $forAllMap(".Name", function (hop) {
+            hop.style.backgroundColor = "white";
         })
         var choix = parseInt(Math.random() * (nb + 1));
         var winer = document.getElementsByClassName("Name")[choix];
