@@ -4,15 +4,13 @@
     <style>
         body {
             font-weight: bolder;
-            transition: all;
-            transition-duration: 1s;
         }
 
         .Name {
             text-decoration: underline;
             font-size: large;
             transition: all;
-            transition-duration: 2s;
+            transition-duration: 0.5s;
             transition-timing-function: ease-in-out;
         }
 
@@ -76,7 +74,7 @@
         for (var i in all.resto) {
             nb++
         }
-        var time = 5000 + Math.random() * 4;
+        var time = 10000 + Math.random() * 4;
         var step = 100;
         var now = 0;
         var actuel = 0;
