@@ -4,6 +4,7 @@
     <style>
         body {
             font-weight: bolder;
+            transition: all;
         }
 
         .Name {
@@ -87,7 +88,7 @@
             coef *= 1.5;
             actuel = (actuel + 1) % nb;
             var winer = document.getElementsByClassName("Name")[actuel];
-            winer.style.backgroundColor = "red";
+            winer.style.backgroundColor = "cyan";
             setTimeout(onestep, step);
         }
         setTimeout(onestep, step);
