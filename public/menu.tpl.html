@@ -71,12 +71,24 @@
         for (var i in all.resto) {
             nb++
         }
-        $forAllMap(".Name", function (hop) {
-            hop.style.backgroundColor = "white";
-        })
-        var choix = parseInt(Math.random() * (nb + 1));
-        var winer = document.getElementsByClassName("Name")[choix];
-        winer.style.backgroundColor = "red";
+        var time = 5000 + Math.random() * 4;
+        var step = 400;
+        var now = 0;
+        var actuel = 0;
+        function onestep() {
+            if (now > time)
+                return;
+            $forAllMap(".Name", function (hop) {
+                hop.style.backgroundColor = "white";
+            })
+            now += step;
+            step += Math.random() * 300;
+            actuel = (actuel + 1) % nb;
+            var winer = document.getElementsByClassName("Name")[actuel];
+            winer.style.backgroundColor = "red";
+            setTimeout(onestep, step);
+        }
+        setTimeout(onestep, step);
     }
 
 </script>
