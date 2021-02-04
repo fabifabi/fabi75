@@ -102,9 +102,9 @@ app.get('/menu', function (req, res) {
       }
     } else {
       for (var i in all.resto) {
-        txt += "<div class='Name resto" + numresto + "'>No restaurante " + all.resto[i] + "</div><br>"
+        txt += "<div class='Name resto" + numresto + "'>No restaurante " + all.resto[i] + "<br>"
         numresto++;
-        txt += "<div class='Plat Empty'>Este restaurante ainda não foi publicado :(</div><br>";
+        txt += "<div class='Plat Empty'>Este restaurante ainda não foi publicado :(</div></div><br>";
       }
     }
     var out = tpl.replace("%%insert%%", txt)
