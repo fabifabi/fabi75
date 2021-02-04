@@ -85,7 +85,7 @@ app.get('/menu', function (req, res) {
     if (all.tab[key]) {
       for (var i in all.tab[key]) {
         var l = all.tab[key][i];
-        txt += "<div class='Name resto" + numresto + "'>No restaurante " + l.from + "</div><br>"
+        txt += "<div class='Name resto" + numresto + "'>No restaurante " + l.from + "<br>"
         numresto++;
         if (l.txt.length > 0) {
           for (var j = 0; j < l.txt.length; j++) {
@@ -94,6 +94,7 @@ app.get('/menu', function (req, res) {
             }
             j++;
           }
+          txt += "</div>";
         } else {
           txt += "<div class='Plat Empty'>Este restaurante ainda não foi publicado :(</div><br>";
         }
