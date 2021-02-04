@@ -76,11 +76,10 @@ app.get('/menu', function (req, res) {
     var key = at.getFullYear() * 10000 + at.getMonth() * 100 + at.getDay();
     all = await getAll();
 
-    var txt = "<div class='title'>Pratos do Dias </div><br>";
     log(key)
     log(all)
     log(all.tab[key])
-    txt += "<script>var key=" + key + ";var all=" + JSON.stringify(all) + "</script>"
+    var txt = "<script>var key=" + key + ";var all=" + JSON.stringify(all) + "</script>"
     var numresto = 0;
     if (all.tab[key]) {
       for (var i in all.tab[key]) {
