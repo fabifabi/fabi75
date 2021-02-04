@@ -80,7 +80,7 @@ app.get('/menu', function (req, res) {
     log(key)
     log(all)
     log(all.tab[key])
-    txt = +"<script>var all=" + JSON.stringify(all) + "</script>"
+    txt += "<script>var all=" + JSON.stringify(all) + "</script>"
     if (all.tab[key]) {
       for (var i in all.tab[key]) {
         var l = all.tab[key][i];
