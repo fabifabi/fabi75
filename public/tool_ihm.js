@@ -14,7 +14,7 @@ window.onresize = windowResize;
 */
 
 function log() {
-    alert("ok")
+    //  alert("ok")
     var err = new Error();
     var s = err.stack;
     var l = s.split("\n");

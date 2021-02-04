@@ -71,7 +71,7 @@
         for (var i in all.resto) {
             nb++
         }
-        $forall(".Name", function (div) {
+        $forAllMap(".Name", function (div) {
             div.style.backgroundColor = "white";
         })
         var choix = parseInt(Math.random() * (nb + 1));
