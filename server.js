@@ -101,7 +101,7 @@ app.get('/menu', function (req, res) {
       }
     } else {
       for (var i in all.resto) {
-        txt += "<div class='Name resto" + numresto + "'>No restaurante " + i + "</div><br>"
+        txt += "<div class='Name resto" + numresto + "'>No restaurante " + all.resto[i] + "</div><br>"
         numresto++;
         txt += "<div class='Plat Empty'>Este restaurante ainda não foi publicado :(</div><br>";
       }
