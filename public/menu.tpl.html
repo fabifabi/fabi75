@@ -45,6 +45,7 @@
             background-image: url("fond.jpeg");
         }
     </style>
+    <script src="tool_ihm.js"></script>
 
 </head>
 
@@ -70,8 +71,11 @@
         for (var i in all.resto) {
             nb++
         }
+        $forall(".Name", function (div) {
+            div.style.backgroundColor = "white";
+        })
         var choix = parseInt(Math.random() * (nb + 1));
-        var winer = document.getElementsByClassName("resto" + choix)[0];
+        var winer = document.getElementsByClassName("Name")[choix];
         winer.style.backgroundColor = "red";
     }
 
