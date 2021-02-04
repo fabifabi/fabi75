@@ -72,9 +72,10 @@
             nb++
         }
         var time = 5000 + Math.random() * 4;
-        var step = 400;
+        var step = 100;
         var now = 0;
         var actuel = 0;
+        var coef = 0.1;
         function onestep() {
             if (now > time)
                 return;
@@ -82,7 +83,8 @@
                 this.style.backgroundColor = "white";
             })
             now += step;
-            step += Math.random() * 300;
+            step += Math.random() * 200 * coef;
+            coef *= 1.5;
             actuel = (actuel + 1) % nb;
             var winer = document.getElementsByClassName("Name")[actuel];
             winer.style.backgroundColor = "red";
