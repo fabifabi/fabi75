@@ -52,7 +52,7 @@
     <div id="gauche"> </div>
     <div id="menu">
         <a href="inscription.html">Você tem um restaurante ?</a>
-        <button onclick="Choose()">Choose for us !</button>
+        <button id="choose" onclick="Choose()">Choose for us !</button>
 
 
         %%insert%%
@@ -61,8 +61,18 @@
 </body>
 <script>
     console.log(all);
+    if (all.tab[key]) {
+    } else {
+        choose.style.display = "none"
+    }
     function Choose() {
-
+        var nb = 0;
+        for (var i in all.tab[key]) {
+            nb++
+        }
+        var choix = parseInt(Math.random() * (nb + 1));
+        var winer = document.getElementsByClassName("resto" + choix)[0];
+        winer.style.backgroundColor = "red";
     }
 
 </script>

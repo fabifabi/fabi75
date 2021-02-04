@@ -80,11 +80,13 @@ app.get('/menu', function (req, res) {
     log(key)
     log(all)
     log(all.tab[key])
-    txt += "<script>var all=" + JSON.stringify(all) + "</script>"
+    txt += "<script>var key=" + key + ";var all=" + JSON.stringify(all) + "</script>"
     if (all.tab[key]) {
+      var numresto = 0;
       for (var i in all.tab[key]) {
         var l = all.tab[key][i];
-        txt += "<div class='Name'>No restaurante " + l.from + "</div><br>"
+        txt += "<div class='Name resto" + numresto + "'>No restaurante " + l.from + "</div><br>"
+        numresto++;
         if (l.txt.length > 0) {
           for (var j = 0; j < l.txt.length; j++) {
             if (l.txt[j].trim().length > 0) {
