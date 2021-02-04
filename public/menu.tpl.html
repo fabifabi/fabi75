@@ -87,7 +87,7 @@
             })
             now += step;
             step += Math.random() * 200 * coef;
-            coef *= 1.5;
+            coef *= 1.05;
             actuel = (actuel + 1) % nb;
             var winer = document.getElementsByClassName("Name")[actuel];
             winer.style.backgroundColor = "cyan";
