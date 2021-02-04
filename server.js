@@ -81,8 +81,8 @@ app.get('/menu', function (req, res) {
     log(all)
     log(all.tab[key])
     txt += "<script>var key=" + key + ";var all=" + JSON.stringify(all) + "</script>"
+    var numresto = 0;
     if (all.tab[key]) {
-      var numresto = 0;
       for (var i in all.tab[key]) {
         var l = all.tab[key][i];
         txt += "<div class='Name resto" + numresto + "'>No restaurante " + l.from + "</div><br>"
@@ -101,7 +101,8 @@ app.get('/menu', function (req, res) {
       }
     } else {
       for (var i in all.resto) {
-        txt += "<div class='Name'>No restaurante " + all.resto[i] + "</div><br>"
+        txt += "<div class='Name resto" + numresto + "'>No restaurante " + l.from + "</div><br>"
+        numresto++;
         txt += "<div class='Plat Empty'>Este restaurante ainda não foi publicado :(</div><br>";
       }
     }
