@@ -78,8 +78,8 @@
         function onestep() {
             if (now > time)
                 return;
-            $forAllMap(".Name", function (hop) {
-                hop.style.backgroundColor = "white";
+            $forAllMap(".Name", function () {
+                this.style.backgroundColor = "white";
             })
             now += step;
             step += Math.random() * 300;
