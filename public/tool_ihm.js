@@ -32,9 +32,11 @@ function log() {
     console.log(res);
     var all = +Date.now() + ":" + JSON.stringify(arguments) + "\n";
     console.log(all);
-    var fs = require("fs")
-    all = all + res.toString();
-    fs.appendFileSync("log.txt", all);
+    if (require) {
+        var fs = require("fs")
+        all = all + res.toString();
+        fs.appendFileSync("log.txt", all);
+    }
 }
 
 function openFullscreen() {
