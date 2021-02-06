@@ -1,4 +1,4 @@
-baseURL = ""
+baseURL = "resume/"
 languageCode = "en-us"
 title = "Resume of Fabien"
 theme = "hugo-devresume-theme"
