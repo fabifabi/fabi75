@@ -1,0 +1,223 @@
+baseURL = ""
+languageCode = "en-us"
+title = "Resume of Fabien"
+theme = "hugo-devresume-theme"
+
+[params]
+    primaryColor = "#54B689"
+    textPrimaryColor = "#292929"
+
+    [params.profile]
+        enable = true
+        name = "Fabi"
+        tagline = "Senior Software Engineer"
+    #    avatar = "avatar.png"
+
+    [params.contact]
+        enable = true
+        location = "Lisbon"
+
+ #       [[params.contact.list]]
+#        icon = "fas fa-phone-square" 
+#        url = "tel:#"
+#        text = "0123 4567 890"
+        [[params.contact.list]]
+        icon = "fas fa-envelope-square"
+        url = "mailto:#"
+        text = "fabi75.pro@gmail.com"
+    #    [[params.contact.list]]
+    #    icon = "fas fa-globe"
+    #    url = "#"
+    #    text = "www.yourwebsite.com"
+
+    [params.skills]
+        enable = true
+        [[params.skills.list]]
+        title = "Technical"
+        [[params.skills.list.items]]
+        details = "JavaScript/Vanilla.js/Vue/Svelte"
+        [[params.skills.list.items]]
+        details = "Node.js/ASP.NET/PHP"
+        [[params.skills.list.items]]
+        details = "Strong problem solver"
+        [[params.skills.list.items]]
+        details = "MySQL/MS SQL"
+        [[params.skills.list.items]]
+        details = "Object-oriented design"
+        [[params.skills.list.items]]
+        details = "Design and implement database structures"
+        [[params.skills.list.items]]
+        details = "Lead and deliver complex software systems"
+
+        [[params.skills.list]]
+        title = "Professional"
+        [[params.skills.list.items]]
+        details = "Effective communication"
+        [[params.skills.list.items]]
+        details = "Team player"
+        [[params.skills.list.items]]
+        details = "Good time management"
+
+    [params.education]
+        enable = true
+
+        [[params.education.list]]
+        degree = "MSc in Thery Of Computer Science and Mathematics"
+        university = "University Paris VII"
+        dates = "1995-1998"
+
+    [params.awards]
+        enable = false
+
+        [[params.awards.list]]
+        name = "Award Lorem Ipsum"
+        body = "Microsoft lorem ipsum"
+        date = "2019"
+        [[params.awards.list]]
+        name = "Award Donec Sodales"
+        body = "Oracle Aenean"
+        date = "2017"
+
+    [params.languages]
+        enable = true
+        [[params.languages.list]]
+        name = "French"
+        level = "Native"
+        [[params.languages.list]]
+        name = "English"
+        level = "Professional"
+
+    [params.interests]
+        enable = false
+
+        [[params.interests.list]]
+        name = "Climbing"
+        [[params.interests.list]]
+        name = "Snowboarding"
+        [[params.interests.list]]
+        name = "Photography"
+        [[params.interests.list]]
+        name = "Travelling"
+
+    [params.summary]
+        enable = true
+        text = '''The first time I used a computer, an Apple IIc , the teacher show me a game, I play a bit and....I want do mine! I was 8 years old...
+Begin MC68K at 13, Member of The Eko programming team ( Demomaker in Europe).
+I studied Mathematics and Computer theory at University Paris VII (Diderot).
+I know  programming from assembler (Motorola, Intel, ARM) to JavaScript,and many others (C, C++, Pascal, Delphi, C#, JAVA...).'''
+
+    [params.experience]
+        enable = true
+
+        [[params.experience.list]]
+        title = "Craftman / Freelance Senior Software Engineer (Office or Remote worker)"
+        dates = "2012 Sept - Present"
+        company = "*Many clients*"
+        details = '''In my Freelance job, as remote worker or not, I am more specialised in JavaScript, front and back, and some PHP.  
+Many company ask me to search simple and fast implementation, to give my opinion about how to make a better and faster solution, etc.  
+I used Vanilla.js, AngularJS, GoogleMap,SQL, noSQL, D3.js, PhoneGap, JQPlot, HTML5 advanced APi ( Geolocalisation, Connection Zpeed, History, WebWorker (front/back), Canvas, SVG, WEBGL, CSS3 Animation, Realtime Video...)  
+        '''
+        [[params.experience.list.items]]
+        details = "*IpFormation* University Teacher for student for Advanced JavaScript Course."
+        [[params.experience.list.items]]
+        details = "*EDENRED* Big worldwide financial company, I make a RealTime animation of big transaction on a World Map, in SVG (D3.js), animation, REST API."
+        [[params.experience.list.items]]
+        details = "*STELLO PRODUCTION* (realtime video) Many project, from prototype to production, like making a synchronisation between a PPT and a video (android, ipod, PC...) in front only. Interactive interaction on a video in Realtime (websocket/node)."
+        [[params.experience.list.items]]
+        details = "*JAM* (a little Start-up I help from begining) From android/Cordova special Plug-in, to automatic transformation of HTML page to E-mailing, regular customer (and I love work with them !! Hello Guyssss!)"
+        [[params.experience.list.items]]
+        details = "*KYNAPSE* (for a private health insurance) Make an automatic grid system by code (like Bootstrap but in 2D), resize the grids, fonts, etc... to always fit the windows. Filter in front side by JavaScript heavy data (200 MB) for make realtime. Make a little framework for integration of D3.js statistic viewers."
+        [[params.experience.list.items]]
+        details = "*cTools Studio* (VideoGame) Work on KungFuRabbit Game (PC/XBOX version from iPhone), C++ and  C#."
+        [[params.experience.list]]
+        company = "*SoftAtHome* (Paris)"
+        title = "Senior Consultant"
+        dates = "2011 Jan - 2012 Nov"
+        details = "Many project, from visual display of the bug reporting (Canvas), SQL, request optmisation, transform many website in Cordova App"
+        [[params.experience.list]]
+        company = "*WinzzWorld* (Paris)"
+        title = "Senior Consultant"
+        dates = "2010 - 2011"
+        details = "All the Front part, with cordova for iPhone and Android, display by canvas, QR Code generation/reader, Websocket, realtime chat, REST API."
+        [[params.experience.list]]
+        company = "*Winwise* (Paris)"
+        title = "Senior Consultant"
+        dates = "2002 Feb - 2010 Dec"
+        details ='''Work for many customer as :
+        Suez water company : make the weather visualization module and statistics, SQL, 3-tier, C#
+Z-Slide : Audit and Optimization of their video Player, C#
+ECS financial : Animation and Financial calculus, JavaScript'''
+        [[params.experience.list]]
+        company = "*Nokia* (Paris)"
+        title = "Developer"
+        dates = "2002 Mar- 2004 Oct"
+        details = "Maintain the S90 OS, C++"
+        [[params.experience.list]]
+        company = "*Titus* (Paris)"
+        title = "Developer"
+        dates = "2002 Aug- 2002 Dec"
+        details = "*Titus*, AI and Optimisation of Barbarian III on GameBoy Advance, C++ and ARM"
+        [[params.experience.list]]
+        company = "*Duran Dubois* (Paris)"
+        title = "Developer"
+        dates = "1997 Jul- 2002 Jul"
+        details = "AI (Customized A* algorithm and strategic AI), Create a Script langage used averybody in company."
+
+    [params.projects]
+        enable = true
+
+        [[params.projects.list]]
+        title = "OfficeMapping"
+        meta = "Website"
+        tagline = "(Past project) Project of do a Map of office, using Flex(Flash) at begin and SVG later, Back in PHP."
+
+        [[params.projects.list]]
+        title = "TrombiPro"
+        meta = "Website&mobile App (iPhone/Android)"
+        tagline = "(Past project) Automatic generation, display of Hierarchical Tree, export in PNG/PDF/JPG/JSON/CSV, JavaScript/PHP/Cordova"
+
+        [[params.projects.list]]
+        title = "FabiBrowser"
+        meta = "Open Source"
+        tagline = "An NW.js based browser, customised for my need..."
+
+        [[params.projects.list]]
+        title = "Personnal Assistance"
+        meta = "Website,in progress"
+        tagline = "A JS script for help people using website by using the last JS API. (webcam,sound,webworker,WebSocket)"
+
+
+    [params.information]
+        enable = true
+        [[params.information.list]]
+        title = "Papers, *Programmez !!* French Magazine"
+        [[params.information.list.items]]
+        details = "make your Android Game in less than 100 lines of code!, (With PixiJS library and Cordova)"
+        [[params.information.list.items]]
+        details = "Advanced GULP usage,  (explain how to make all in one HTML page, means, no all.js and no all.css, with Cherioo, Gulp, Node...) "
+        [[params.information.list.items]]
+        details = "JSON Schema, (explain what it is, how to use, show some library back and front)"
+        [[params.information.list.items]]
+        details = "Advanced use of the video tag (how to make special fx with it by canvas tag)"
+        [[params.information.list.items]]
+        details = "Vanilla.js VS JQuery (Show speed differences of Jquery VS Vanilla.js, and how to do normal JQuery stuff in plain JavaScript)"
+        [[params.information.list.items]]
+        details = "Firebase introduction (explain why and how to use it)"
+        [[params.information.list.items]]
+        details = "JavaScript Advanced debug tips"
+
+    [params.social]
+        enable = false
+
+        [[params.social.list]]
+        icon = "fab fa-github-square"
+        url = "//github.com/username"
+        title = "username"
+        [[params.social.list]]
+        icon = "fab fa-linkedin"
+        url = "//linkedin.com/in/username"
+        title = "username"
+        [[params.social.list]]
+        icon = "fab fa-twitter-square"
+        url = "//twitter.com/username"
+        title = "@username"
