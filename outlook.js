@@ -63,4 +63,6 @@ async function searchMail() {
 
 searchMail();
 
+searchMail();
+
 exports.searchMail = searchMail;
