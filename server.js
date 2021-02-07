@@ -89,6 +89,8 @@ app.get('/menu', function (req, res) {
       var l = all[i];
       txt += "<div class='Name resto" + i + "'>No restaurante " + l.resto + "<br>"
       for (var j = 0; j < l.foods.length; j++) {
+        if (l.foods[j].length === 0)
+          continue;
         txt += "<div class='Plat'>" + l.foods[j] + "</div><br>";
         txt += "<div class='PlatPhoto'><img src='" + l.photo[j] + "' style='width:100px;heigth:100px;'></img></div><br>";
       }
