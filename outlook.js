@@ -42,7 +42,7 @@ async function searchMail() {
                 return;
             unresto.resto = message.subject;
             console.log(message.text)
-            unresto.foods = message.text.split("/n");
+            unresto.foods = message.text.split("\n");
             unresto.photo = [];
             for (var i = 0; i < message.attachments.length; i++) {
                 //    log(message.attachments[i])
