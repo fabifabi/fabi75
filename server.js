@@ -7,7 +7,7 @@ var emoji = require('node-emoji');
 var getAllDB = require('./nosql').getAll;
 var writeAll = require('./nosql').write;
 
-var searchMail = require("./outlook")
+var searchMail = require("./outlook").searchMail;
 
 var log = console.log;
 
