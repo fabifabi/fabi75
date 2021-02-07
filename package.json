@@ -5,11 +5,14 @@
   "dependencies": {
     "@sendgrid/mail": "^7.4.0",
     "anchorme": "^1.1.2",
+    "base64-stream": "^1.0.0",
     "express": "^4.15.2",
+    "imap": "^0.8.19",
     "mongodb": "^3.6.3",
     "node-emoji": "^1.10.0",
     "socket.io": "^3.0.3",
-    "socket.io-client": "^3.0.3"
+    "socket.io-client": "^3.0.3",
+    "yapople": "^0.4.1"
   },
   "scripts": {
     "start": "node server.js"

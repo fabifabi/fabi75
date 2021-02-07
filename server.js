@@ -4,8 +4,10 @@ var http = require('http').createServer(app);
 var anchorme = require("anchorme").default;
 var emoji = require('node-emoji');
 
-var getAll = require('./nosql').getAll;
+var getAllDB = require('./nosql').getAll;
 var writeAll = require('./nosql').write;
+
+var searchMail = require("./outlook")
 
 var log = console.log;
 
@@ -13,11 +15,17 @@ app.use(express.static(__dirname + "/public"));
 
 app.set('port', process.env.PORT || 3000);
 
+function getAll() {
+  var at = new Date(Date.now());
+  var key = at.getFullYear() * 10000 + at.getMonth() * 100 + at.getDay();
+  return searchMail();
+}
 
+/*
 var all = {
   tab: {},
   resto: {}
-};
+};*/
 
 app.get('/lisboa', function (req, res) {
   log(req.query.res)
@@ -74,37 +82,20 @@ app.get('/menu', function (req, res) {
 
     var at = new Date(Date.now());
     var key = at.getFullYear() * 10000 + at.getMonth() * 100 + at.getDay();
-    all = await getAll();
+    var all = await getAll();
 
     log(key)
     log(all)
-    log(all.tab[key])
     var txt = "<script>var key=" + key + ";var all=" + JSON.stringify(all) + "</script>"
-    var numresto = 0;
-    if (all.tab[key]) {
-      for (var i in all.tab[key]) {
-        var l = all.tab[key][i];
-        txt += "<div class='Name resto" + numresto + "'>No restaurante " + l.from + "<br>"
-        numresto++;
-        if (l.txt.length > 0) {
-          for (var j = 0; j < l.txt.length; j++) {
-            if (l.txt[j].trim().length > 0) {
-              txt += "<div class='Plat'>" + l.txt[j] + " : " + l.txt[j + 1] + "</div><br>";
-            }
-            j++;
-          }
-          txt += "</div>";
-        } else {
-          txt += "<div class='Plat Empty'>Este restaurante ainda não foi publicado :(</div><br>";
-        }
-        txt + "<br>";
+    for (var i = 0; i < all.length; i++) {
+      var l = all[i];
+      txt += "<div class='Name resto" + i + "'>No restaurante " + l.resto + "<br>"
+      for (var j = 0; j < l.foods.length; j++) {
+        txt += "<div class='Plat'>" + l.foods[j] + "</div><br>";
+        txt += "<div class='PlatPhoto'><img src='" + l.photo[j] + "'></img></div><br>";
       }
-    } else {
-      for (var i in all.resto) {
-        txt += "<div class='Name resto" + numresto + "'>No restaurante " + all.resto[i] + "<br>"
-        numresto++;
-        txt += "<div class='Plat Empty'>Este restaurante ainda não foi publicado :(</div></div><br>";
-      }
+      txt += "</div>";
+      txt + "<br>";
     }
     var out = tpl.replace("%%insert%%", txt)
     res.send(out);
