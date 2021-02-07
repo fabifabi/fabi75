@@ -23,11 +23,11 @@ async function searchMail() {
     log(datestr.substr(0, 10));
     messages.forEach((message) => {
         var unresto = {}
-        //    log(message);
+        log(typeof message.date);
         console.log(message.subject);
-        unresto.date = message.date;
+        unresto.date = message.date.toISOString();
         if (unresto.date.indexOf(datestr) !== 0)
-            continue;
+            return;
         unresto.resto = message.subject;
         console.log(message.text)
         unresto.foods = message.text.split("/n");
