@@ -26,7 +26,7 @@ async function searchMail() {
         log(typeof message.date);
         console.log(message.subject);
         unresto.date = message.date.toISOString();
-        if (unresto.date.indexOf(datestr) !== 0)
+        if (unresto.date.indexOf(datestr) !== -1)
             return;
         unresto.resto = message.subject;
         console.log(message.text)
@@ -42,9 +42,10 @@ async function searchMail() {
         all.push(unresto);
     });
     await client.quit();
+    log(all);
     return all;
 };
 
-//searchMail();
+searchMail();
 
 exports.searchMail = searchMail;
