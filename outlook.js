@@ -24,7 +24,7 @@ async function searchMail() {
         if (lastTry !== undefined) {
             var diff = lastTry - date;
             if (diff < 1000 * 60 * 10)
-                return;
+                return all;
         }
         lastTry = date;
         all = [];//[{resto:"",foods:[""],photo:[""]}]}];
