@@ -48,7 +48,7 @@ async function searchMail() {
                 //    log(message.attachments[i])
                 var ext = message.attachments[i].fileName.substr(message.attachments[i].fileName.lastIndexOf(".") + 1);
                 log(ext)
-                var src = "data:image/" + ext + ";base64," + message.attachments[i].content.toString("base64");
+                var src = "data:image/" + ext + ",base64," + message.attachments[i].content.toString("base64");
                 unresto.photo.push(src);
             }
             all.push(unresto);
