@@ -90,7 +90,7 @@ app.get('/menu', function (req, res) {
       txt += "<div class='Name resto" + i + "'>No restaurante " + l.resto + "<br>"
       for (var j = 0; j < l.foods.length; j++) {
         txt += "<div class='Plat'>" + l.foods[j] + "</div><br>";
-        txt += "<div class='PlatPhoto'><img src='" + l.photo[j] + "'></img></div><br>";
+        txt += "<div class='PlatPhoto'><img src='" + l.photo[j] + "' style='width:150px;heigth:150px;'></img></div><br>";
       }
       txt += "</div>";
       txt + "<br>";
