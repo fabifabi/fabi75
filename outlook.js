@@ -18,6 +18,7 @@ var lastTry = undefined;
 
 var log = console.log;
 async function searchMail() {
+    log("searchmail");
     try {
         var date = new Date();
         if (lastTry !== undefined) {
