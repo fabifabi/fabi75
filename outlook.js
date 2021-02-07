@@ -47,4 +47,4 @@ async function searchMail() {
 
 //searchMail();
 
-module.exports = searchMail;
+exports.searchMail = searchMail;
