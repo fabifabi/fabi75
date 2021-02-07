@@ -32,7 +32,7 @@ async function searchMail() {
         const messages = await client.retrieveAll();
 
         var datestr = date.toISOString();
-        log(datestr.substr(0, 10));
+        log(datestr.substr(0, 10), "");
         messages.forEach((message) => {
             var unresto = {}
             log(typeof message.date);
