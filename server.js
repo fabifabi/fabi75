@@ -15,7 +15,7 @@ app.use(express.static(__dirname + "/public"));
 
 app.set('port', process.env.PORT || 3000);
 
-function async getAll() {
+async function getAll() {
   var at = new Date(Date.now());
   var key = at.getFullYear() * 10000 + at.getMonth() * 100 + at.getDay();
   return await searchMail();
