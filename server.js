@@ -80,7 +80,7 @@ app.get('/menu', function (req, res) {
 
     var at = new Date(Date.now());
     var key = at.getFullYear() * 10000 + at.getMonth() * 100 + at.getDay();
-    var all = await getAll();
+    var all = await searchMail();
 
     log(key)
     log(all)
