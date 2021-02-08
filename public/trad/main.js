@@ -16,7 +16,6 @@ var urlPt2fr = 'https://www.googleapis.com/language/translate/v2?target=fr&sourc
 var hop, hop2;
 
 function change(src, urlsrc, urldst) {
-    openFullscreen();
     var enc = encodeURI(src.value);
     clearTimeout(hop);
     clearTimeout(hop2);
@@ -55,5 +54,5 @@ function changeFr() {
 function changePt() {
     change(pt, urlPt2fr, urlFr2pt)
 }
-//window.onload = change;
+window.onload = openFullscreen;
 //setTimeout("change()", 4000);
