@@ -76,6 +76,7 @@ app.get('/clean', function (req, res) {
 var log = console.log;
 
 app.get('/menu', function (req, res) {
+  console.log(JSON.stringify(req.headers));
   async function a() {
 
     var at = new Date(Date.now());
