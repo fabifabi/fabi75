@@ -1,15 +1,1 @@
-J'ai fait ce que tu m'as dit
-
-Pour utiliser :
-Vous ecrivez a cet e-mail :
-arroiosrestaurante@outlook.com
-
-Le titre de email,c'est le nom du restaurant. Par exemple : "chez Fabien"
-Si vous avez 8 plats du jour, mettez 8 lignes de texte, avec 8 lignes de texte.
-
-La ligne 1 est la description de la photo 1
-La ligne 2 est la description de la photo 2
-
-Le site sera remit a jour dans  10 minutes avec vos plats.
-
-(oui c'est encore un peu moche, je sais....)
+[H[2J[3J
