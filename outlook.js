@@ -36,12 +36,12 @@ async function searchMail() {
         messages.forEach((message) => {
             var unresto = {}
             log(typeof message.date);
-            console.log(message.subject);
+            log(message.subject);
             unresto.date = message.date.toISOString();
             if (unresto.date.indexOf(datestr) !== -1)
                 return;
             unresto.resto = message.subject;
-            console.log(message.text)
+            log(message.text)
             if (message.text.indexOf("---") > -1)
                 message.text = message.text.substr(0, message.text.indexOf("---"));
             unresto.foods = message.text.split("\n");
