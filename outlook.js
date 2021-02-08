@@ -16,7 +16,7 @@ const client = new Client({
 var all = [];
 var lastTry = undefined;
 
-var log = console.log;
+var log = function () { };// console.log;
 async function searchMail() {
     log("searchmail");
     try {
