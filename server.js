@@ -52,7 +52,7 @@ app.get('/lisboa', function (req, res) {
         all.tab[key][all.resto[obj.address]] = { from: all.resto[obj.address], txt: obj.body.split(",") };
         log(JSON.stringify(all), "ici")
         await writeAll(all)
-        console.dir(all);
+        //        console.dir(all);
       }
     }
     res.send(req.query)
@@ -84,7 +84,7 @@ app.get('/menu', function (req, res) {
     var all = await searchMail();
 
     log(key)
-    log(all)
+    //    log(all)
     var txt = "<script>var key=" + key + ";var all=" + JSON.stringify(all) + "</script>"
     for (var i = 0; i < all.length; i++) {
       var l = all[i];
