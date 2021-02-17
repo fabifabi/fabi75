@@ -27,7 +27,7 @@ function change(src) {
     function get() {
         postAjax(urlDetect, { key: api, q: src }, function (res) {
             var txt = JSON.parse(res);
-            var lang = txt.data.detections[0].language;
+            var lang = txt.data.detections[0][0].language;
             log(txt.data);
             log(lang);
             var urls = urlFr2pt.replace("##", localStorage.langdst).replace("%%", localStorage.lang);
