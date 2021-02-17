@@ -30,7 +30,7 @@ function change(src) {
             var lang = txt.data.detections.language;
             var urls = urlFr2pt;
             var urld = urlPt2fr;
-            if (lang === "pt") {
+            if (lang !== "pt") {
                 urld = urlFr2pt;
                 urls = urlPt2fr;
             }
