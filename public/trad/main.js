@@ -39,7 +39,7 @@ function change(src) {
                 log(txt);
                 var val = txt.data.translations[0].translatedText
                 trad.value = val;
-                var enc = encodeURI(trad.value);
+                //var enc = encodeURI(trad.value);
                 trad.select();
                 trad.setSelectionRange(0, 99999); /* For mobile devices */
                 document.execCommand("copy");
