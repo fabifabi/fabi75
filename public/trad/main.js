@@ -31,8 +31,8 @@ function change(src) {
             var urls = urlFr2pt.replace("##", localStorage.langdst).replace("%%", localStorage.lang);
             var urld = urlPt2fr.replace("##", localStorage.lang).replace("%%", localStorage.langdst);
             if (lang === localStorage.lang) {
-                urls = urlFr2pt.replace("##", localStorage.lang).replace("%%", localStorage.langdst);
-                urld = urlPt2fr.replace("##", localStorage.langdst).replace("%%", localStorage.lang);
+                urls = urlFr2pt.replace("##", localStorage.langdst).replace("%%", localStorage.lang);
+                urld = urlPt2fr.replace("##", localStorage.lang).replace("%%", localStorage.langdst);
 
             }
             getAjax(urls + enc, function (res) {
