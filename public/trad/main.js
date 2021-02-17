@@ -10,7 +10,7 @@ var test = {
 
 var text = "Bonjour ! comment ca va ?";
 
-var urlFr2pt = 'https://www.googleapis.com/language/translate/v2?target=pt&source=fr&format=text&key=' + api + '&q=';
+var urlFr2pt = 'https://www.googleapis.com/language/translate/v2?target=pt&format=text&key=' + api + '&q=';
 var urlPt2fr = 'https://www.googleapis.com/language/translate/v2?target=fr&source=pt&format=text&key=' + api + '&q=';
 
 var urlDetect = "https://translation.googleapis.com/language/translate/v2/detect";
