@@ -25,7 +25,7 @@ function change(src) {
         get
         , 500);
     function get() {
-        postAjax(urlDetect + enc, function (res) {
+        postAjax(urlDetect, { q: src }, function (res) {
             var txt = JSON.parse(res);
             var lang = txt.data.detections.language;
             var urls = urlFr2pt;
