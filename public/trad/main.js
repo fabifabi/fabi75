@@ -47,17 +47,18 @@ function change(src) {
                 trad.setSelectionRange(0, 99999); /* For mobile devices */
                 document.execCommand("copy");
                 srcid.focus();
-                /*    hop2 = setTimeout(
+                get2();/*
+                    hop2 = setTimeout(
                         get2
-                        , 500);
-                    function get2() {
-                        getAjax(urld + enc, function (res) {
-                            var txt = JSON.parse(res);
-                            log(txt);
-                            var val = txt.data.translations[0].translatedText
-                            trad2.value = val;
-                        });
-                    }*/
+                        , 500);*/
+                function get2() {
+                    getAjax(urld + enc, function (res) {
+                        var txt = JSON.parse(res);
+                        log(txt);
+                        var val = txt.data.translations[0].translatedText
+                        trad2.value = val;
+                    });
+                }
             });
         });
     }
