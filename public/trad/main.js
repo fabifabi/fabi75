@@ -18,7 +18,7 @@ var urlDetect = "https://translation.googleapis.com/language/translate/v2/detect
 var hop, hop2;
 
 function change(src) {
-    var enc = encodeURI(src.value);
+    var enc = encodeURI(src);
     clearTimeout(hop);
     clearTimeout(hop2);
     hop = setTimeout(
