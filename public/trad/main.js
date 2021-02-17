@@ -13,13 +13,11 @@ var text = "Bonjour ! comment ca va ?";
 var urlFr2pt = 'https://www.googleapis.com/language/translate/v2?target=pt&source=fr&format=text&key=' + api + '&q=';
 var urlPt2fr = 'https://www.googleapis.com/language/translate/v2?target=fr&source=pt&format=text&key=' + api + '&q=';
 
-var url2fr = 'https://www.googleapis.com/language/translate/v2?target=fr&format=text&key=' + api + '&q=';
-
 var urlDetect = "https://translation.googleapis.com/language/translate/v2/detect&key=" + api + '&q='
 
 var hop, hop2;
 
-function change(src, urlsrc, urldst) {
+function change(src) {
     var enc = encodeURI(src.value);
     clearTimeout(hop);
     clearTimeout(hop2);
@@ -59,13 +57,8 @@ function change(src, urlsrc, urldst) {
                 }
             })
         }
+    }
 }
 
-    function changeFr() {
-        change(fr, urlFr2pt, urlPt2fr)
-    }
-    function changePt() {
-        change(pt, urlPt2fr, urlFr2pt)
-    }
-    window.onload = openFullscreen;
+window.onload = openFullscreen;
 //setTimeout("change()", 4000);
