@@ -10,7 +10,7 @@ var test = {
 
 var text = "Bonjour ! comment ca va ?";
 
-var urlFr2pt = 'https://www.googleapis.com/language/translate/v2?target=pt&format=text&key=' + api + '&q=';
+var urlFr2pt = 'https://www.googleapis.com/language/translate/v2?target=%%&format=text&key=' + api + '&q=';
 var urlPt2fr = 'https://www.googleapis.com/language/translate/v2?target=%%&source=pt&format=text&key=' + api + '&q=';
 
 var urlDetect = "https://translation.googleapis.com/language/translate/v2/detect";
@@ -28,10 +28,10 @@ function change(src) {
         postAjax(urlDetect, { key: api, q: src }, function (res) {
             var txt = JSON.parse(res);
             var lang = txt.data.detections.language;
-            var urls = urlFr2pt;
+            var urls = urlFr2pt.replace(localStorage.langdst);
             var urld = urlPt2fr.replace(localStorage.lang);
             if (lang === "pt") {
-                urls = urlPt2fr;
+                urls = urlPt2fr.replace(localStorage.langdst);
                 urld = urlFr2pt.replace(localStorage.lang);
             }
             getAjax(urls + enc, function (res) {
