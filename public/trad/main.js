@@ -30,9 +30,9 @@ function change(src) {
             var lang = txt.data.detections.language;
             var urls = urlFr2pt;
             var urld = urlPt2fr;
-            if (lang !== "pt") {
-                urld = urlFr2pt;
+            if (lang === "pt") {
                 urls = urlPt2fr;
+                urld = urlFr2pt;
             }
             getAjax(urls + enc, function (res) {
                 var txt = JSON.parse(res);
