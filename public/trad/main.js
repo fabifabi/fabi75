@@ -17,6 +17,12 @@ var urlDetect = "https://translation.googleapis.com/language/translate/v2/detect
 
 var hop, hop2;
 
+function focus() {
+    log("focus");
+    navigator.clipboard.readText().then(function (clipText) { if (clipText.length === 0) return; srcid.value = clipText; change(srcid.value); });
+}
+window.onfocus = focus;
+
 function change(src) {
     var enc = encodeURI(src);
     clearTimeout(hop);
@@ -35,6 +41,7 @@ function change(src) {
             if (lang === localStorage.lang) {
                 urld = urlFr2pt.replace("##", localStorage.langdst).replace("%%", localStorage.lang);
                 urls = urlPt2fr.replace("##", localStorage.lang).replace("%%", localStorage.langdst);
+                //                    clipText => document.getElementById("outbox").innerText = clipText);
 
             }
             getAjax(urls + enc, function (res) {
@@ -43,10 +50,16 @@ function change(src) {
                 var val = txt.data.translations[0].translatedText
                 trad.value = val;
                 //var enc = encodeURI(trad.value);
-                trad.select();
-                trad.setSelectionRange(0, 99999); /* For mobile devices */
-                document.execCommand("copy");
-                srcid.focus();
+                //     trad.select();
+                /*                trad.setSelectionRange(0, 99999); /* For mobile devices */
+                /*document.execCommand("copy");
+                srcid.focus();*/
+                navigator.clipboard.writeText(trad.value).then(function () {
+                    /* clipboard successfully set */
+                }, function () {
+                    /* clipboard write failed */
+                });
+                //                navigator.clipboard.readText().then(
                 get2();/*
                     hop2 = setTimeout(
                         get2
