@@ -19,7 +19,8 @@ var hop, hop2;
 
 function focus() {
     log("focus");
-    navigator.clipboard.readText().then(function (clipText) { if (clipText.length === 0) return; srcid.value = clipText; change(srcid.value); });
+    if (navigator.clipboard)
+        navigator.clipboard.readText().then(function (clipText) { if (clipText.length === 0) return; srcid.value = clipText; change(srcid.value); });
 }
 window.onfocus = focus;
 
@@ -54,11 +55,12 @@ function change(src) {
                 /*                trad.setSelectionRange(0, 99999); /* For mobile devices */
                 /*document.execCommand("copy");
                 srcid.focus();*/
-                navigator.clipboard.writeText(trad.value).then(function () {
-                    /* clipboard successfully set */
-                }, function () {
-                    /* clipboard write failed */
-                });
+                if (navigator.clipboard)
+                    navigator.clipboard.writeText(trad.value).then(function () {
+                        /* clipboard successfully set */
+                    }, function () {
+                        /* clipboard write failed */
+                    });
                 //                navigator.clipboard.readText().then(
                 get2();/*
                     hop2 = setTimeout(
