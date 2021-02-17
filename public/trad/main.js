@@ -30,10 +30,6 @@ function change(src) {
         //   var lang = txt.data.detections.language;
         var urls = urlFr2pt.replace("##", localStorage.langdst).replace("%%", localStorage.lang);
         var urld = urlPt2fr.replace("##", localStorage.lang).replace("%%", localStorage.langdst);
-        if (lang === "pt") {
-            urls = urlPt2fr.replace("##", localStorage.langdst).replace("%%", localStorage.lang);
-            urld = urlFr2pt.replace("##", localStorage.lang).replace("%%", localStorage.langdst);
-        }
         getAjax(urls + enc, function (res) {
             var txt = JSON.parse(res);
             log(txt);
