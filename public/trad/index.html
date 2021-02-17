@@ -8,7 +8,7 @@
     <script src="main.js"></script>
     <script>
         if (localStorage.lang === undefined) {
-            localStorage.lang = prompt('francais=fr, english=en,ukrainia=uk,...');
+            localStorage.lang = prompt('francais=fr, english=en,ukrainia=ukr,...');
         }
         if (localStorage.langdst === undefined) {
             localStorage.langdst = "pt";
@@ -25,10 +25,10 @@
         style="position: fixed;top:85%;left:0%;width: 100%;height: 15%;"></textarea>
     <button onclick="srcid.value='';trad.value='';"
         style="position: fixed;top:30%;left:80%;width: 10%;height: 10%;">X</button>
-    <button onclick="localStorage.lang=prompt('francais=fr, english=en,ukrainia=uk,...');"
+    <button onclick="localStorage.lang=prompt('francais=fr, english=en,ukrainia=ukr,...');"
         style="position: fixed;top:50%;left:65%;width: 10%;height: 20%;">Change Langage Source/Idioma de
         destino</button>
-    <button onclick="localStorage.langdst=prompt('francais=fr, english=en,ukrainia=uk,...');"
+    <button onclick="localStorage.langdst=prompt('francais=fr, english=en,ukrainia=ukr,...');"
         style="position: fixed;top:50%;left:80%;width: 10%;height: 20%;">Change Langage Destination
         (default=portugueze)</button>
     <button onclick="openFullscreen()" style="position: fixed;top:70%;left:80%;width: 10%;height: 10%;">All
