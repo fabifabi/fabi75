@@ -28,11 +28,12 @@ function change(src) {
         postAjax(urlDetect, { key: api, q: src }, function (res) {
             var txt = JSON.parse(res);
             var lang = txt.data.detections.language;
+            log(lang);
             var urls = urlFr2pt.replace("##", localStorage.langdst).replace("%%", localStorage.lang);
             var urld = urlPt2fr.replace("##", localStorage.lang).replace("%%", localStorage.langdst);
             if (lang === localStorage.lang) {
-                urls = urlFr2pt.replace("##", localStorage.langdst).replace("%%", localStorage.lang);
-                urld = urlPt2fr.replace("##", localStorage.lang).replace("%%", localStorage.langdst);
+                urld = urlFr2pt.replace("##", localStorage.langdst).replace("%%", localStorage.lang);
+                urls = urlPt2fr.replace("##", localStorage.lang).replace("%%", localStorage.langdst);
 
             }
             getAjax(urls + enc, function (res) {
