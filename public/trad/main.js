@@ -11,7 +11,7 @@ var test = {
 var text = "Bonjour ! comment ca va ?";
 
 var urlFr2pt = 'https://www.googleapis.com/language/translate/v2?target=pt&format=text&key=' + api + '&q=';
-var urlPt2fr = 'https://www.googleapis.com/language/translate/v2?target=fr&source=pt&format=text&key=' + api + '&q=';
+var urlPt2fr = 'https://www.googleapis.com/language/translate/v2?target=%%&source=pt&format=text&key=' + api + '&q=';
 
 var urlDetect = "https://translation.googleapis.com/language/translate/v2/detect";
 
@@ -29,10 +29,10 @@ function change(src) {
             var txt = JSON.parse(res);
             var lang = txt.data.detections.language;
             var urls = urlFr2pt;
-            var urld = urlPt2fr;
+            var urld = urlPt2fr.replace(localStorage.lang);
             if (lang === "pt") {
                 urls = urlPt2fr;
-                urld = urlFr2pt;
+                urld = urlFr2pt.replace(localStorage.lang);
             }
             getAjax(urls + enc, function (res) {
                 var txt = JSON.parse(res);
