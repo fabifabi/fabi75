@@ -13,7 +13,7 @@ var text = "Bonjour ! comment ca va ?";
 var urlFr2pt = 'https://www.googleapis.com/language/translate/v2?target=pt&source=fr&format=text&key=' + api + '&q=';
 var urlPt2fr = 'https://www.googleapis.com/language/translate/v2?target=fr&source=pt&format=text&key=' + api + '&q=';
 
-var urlDetect = "https://translation.googleapis.com/language/translate/v2/detect&key=" + api + '&q='
+var urlDetect = "https://translation.googleapis.com/language/translate/v2/detect";
 
 var hop, hop2;
 
@@ -25,7 +25,7 @@ function change(src) {
         get
         , 500);
     function get() {
-        postAjax(urlDetect, { q: src }, function (res) {
+        postAjax(urlDetect, { key: api, q: src }, function (res) {
             var txt = JSON.parse(res);
             var lang = txt.data.detections.language;
             var urls = urlFr2pt;
