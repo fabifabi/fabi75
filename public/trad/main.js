@@ -43,8 +43,8 @@ function change(src) {
                 trad.select();
                 trad.setSelectionRange(0, 99999); /* For mobile devices */
                 document.execCommand("copy");
-                src.focus();
-                hop = setTimeout(
+                srcid.focus();
+                hop2 = setTimeout(
                     get2
                     , 500);
                 function get2() {
@@ -53,10 +53,10 @@ function change(src) {
                         log(txt);
                         var val = txt.data.translations[0].translatedText
                         trad2.value = val;
-                    })
+                    });
                 }
-            })
-        }
+            });
+        });
     }
 }
 
