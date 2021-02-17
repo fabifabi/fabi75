@@ -25,34 +25,39 @@ function change(src) {
         get
         , 500);
     function get() {
-        //   postAjax(urlDetect, { key: api, q: src }, function (res) {
-        //   var txt = JSON.parse(res);
-        //   var lang = txt.data.detections.language;
-        var urls = urlFr2pt.replace("##", localStorage.langdst).replace("%%", localStorage.lang);
-        var urld = urlPt2fr.replace("##", localStorage.lang).replace("%%", localStorage.langdst);
-        getAjax(urls + enc, function (res) {
+        postAjax(urlDetect, { key: api, q: src }, function (res) {
             var txt = JSON.parse(res);
-            log(txt);
-            var val = txt.data.translations[0].translatedText
-            trad.value = val;
-            //var enc = encodeURI(trad.value);
-            trad.select();
-            trad.setSelectionRange(0, 99999); /* For mobile devices */
-            document.execCommand("copy");
-            srcid.focus();
-            /*    hop2 = setTimeout(
-                    get2
-                    , 500);
-                function get2() {
-                    getAjax(urld + enc, function (res) {
-                        var txt = JSON.parse(res);
-                        log(txt);
-                        var val = txt.data.translations[0].translatedText
-                        trad2.value = val;
-                    });
-                }*/
+            var lang = txt.data.detections.language;
+            var urls = urlFr2pt.replace("##", localStorage.langdst).replace("%%", localStorage.lang);
+            var urld = urlPt2fr.replace("##", localStorage.lang).replace("%%", localStorage.langdst);
+            if (lang !== localStorage.lang) {
+                urls = urlFr2pt.replace("##", localStorage.lang).replace("%%", localStorage.langdst);
+                urld = urlPt2fr.replace("##", localStorage.langdst).replace("%%", localStorage.lang);
+
+            }
+            getAjax(urls + enc, function (res) {
+                var txt = JSON.parse(res);
+                log(txt);
+                var val = txt.data.translations[0].translatedText
+                trad.value = val;
+                //var enc = encodeURI(trad.value);
+                trad.select();
+                trad.setSelectionRange(0, 99999); /* For mobile devices */
+                document.execCommand("copy");
+                srcid.focus();
+                /*    hop2 = setTimeout(
+                        get2
+                        , 500);
+                    function get2() {
+                        getAjax(urld + enc, function (res) {
+                            var txt = JSON.parse(res);
+                            log(txt);
+                            var val = txt.data.translations[0].translatedText
+                            trad2.value = val;
+                        });
+                    }*/
+            });
         });
-        // });
     }
 }
 
