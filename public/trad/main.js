@@ -19,7 +19,7 @@ var hop, hop2;
 
 function focus() {
     log("focus");
-    if (navigator.clipboard)
+    if (navigator.clipboard && navigator.clipboard.readText)
         navigator.clipboard.readText().then(function (clipText) { if (clipText.length === 0) return; srcid.value = clipText; change(srcid.value); });
 }
 window.onfocus = focus;
@@ -55,7 +55,7 @@ function change(src) {
                 /*                trad.setSelectionRange(0, 99999); /* For mobile devices */
                 /*document.execCommand("copy");
                 srcid.focus();*/
-                if (navigator.clipboard)
+                if (navigator.clipboard && navigator.clipboard.writeText)
                     navigator.clipboard.writeText(trad.value).then(function () {
                         /* clipboard successfully set */
                     }, function () {
