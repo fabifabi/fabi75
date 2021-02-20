@@ -29,19 +29,19 @@
     <textarea onpaste="srcid.value=''" oninput="change()" onkeyup="change(srcid.value)" placeholder="Type here"
         id="srcid" style="position: fixed;top:0%;left:0%;width: 100%;height: 50%;"></textarea>
     <textarea placeholder="translation" id="trad" readonly
-        style="position: fixed;top:50%;left:0%;width: 100%;height: 35%;background-color: lightgray;"></textarea>
+        style="position: fixed;top:50%;left:0%;width: 80%;height: 35%;background-color: lightgray;"></textarea>
     <textarea placeholder="Google translate" id="trad2" readonly
-        style="position: fixed;top:85%;left:0%;width: 100%;height: 15%;background-color: lightgray;"></textarea>
+        style="position: fixed;top:85%;left:0%;width: 80%;height: 15%;background-color: lightgray;"></textarea>
     <button onclick="srcid.value='';trad.value='';"
-        style="position: fixed;top:30%;left:80%;width: 10%;height: 10%;">X</button>
+        style="position: fixed;top:50%;left:80%;width: 20%;height: 10%;">X</button>
     <button onclick="localStorage.lang=prompt('francais=fr, english=en,ukrainia=ukr,...');"
-        style="position: fixed;top:50%;left:65%;width: 10%;height: 20%;">Change Langage Source/Idioma de
+        style="position: fixed;top:60%;left:80%;width: 20%;height: 10%;">Change Langage Source/Idioma de
         destino</button>
     <button onclick="localStorage.langdst=prompt('francais=fr, english=en,ukrainia=ukr,...');"
-        style="position: fixed;top:50%;left:80%;width: 10%;height: 20%;">Change Langage Destination
+        style="position: fixed;top:70%;left:80%;width: 20%;height: 10%;">Change Langage Destination
         (default=portugueze)</button>
     <button onclick="if (!document.fullscreen) openFullscreen(); else closeFullscreen();"
-        style="position: fixed;top:70%;left:80%;width: 10%;height: 10%;">All
+        style="position: fixed;top:80%;left:80%;width: 20%;height: 10%;">All
         Screen/Tela inteira</button>
 
 </html>
