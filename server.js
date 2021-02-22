@@ -3,6 +3,8 @@ var app = express();
 var http = require('http').createServer(app);
 var anchorme = require("anchorme").default;
 var emoji = require('node-emoji');
+var fs = require("fs");
+
 
 var getAllDB = require('./nosql').getAll;
 var writeAll = require('./nosql').write;
@@ -104,6 +106,25 @@ app.get('/menu', function (req, res) {
   a();
 })
 
+var tradscript = ";" + fs.readFileSync("trad.js").toString();
+var getLangDB = require("./nosqlSimple").getLangDB;
+app.get('/mytrad.js', function (req, res) {
+  //console.log("header-----", JSON.stringify(req));
+  async function a() {
+    var url = req.get("referer");//.get('host')
+    log(url);
+    var langs = await getLangDB(url)
+    var out = "var urlsrc=" + url + ";var langdispo=" + JSON.stringify(langs) + tradscript;
+    if (langs)
+      for (var i = 0; i < langs.length; i++) {
+        out = out.replace("%%lang%%", langs[i]);
+      }
+    out = out.replaceAll("%%lang%%", "");
+    res.send(out);
+  }
+  a();
+})
+
 var options = {};
 http.listen(app.get("port"), () => {
   console.log("listening ws *: ", app.get("port"));
@@ -117,8 +138,6 @@ http.listen(app.get("port"), () => {
     });
   });
 });
-
-var fs = require("fs");
 
 var tpl = fs.readFileSync("./public/menu.tpl.html").toString();
 
