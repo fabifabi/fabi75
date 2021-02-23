@@ -34,6 +34,7 @@ function change(src) {
     function get() {
         postAjax(urlDetect, { key: api, q: src }, function (res) {
             var txt = JSON.parse(res);
+            log(txt);
             var lang = txt.data.detections[0][0].language;
             log(txt.data);
             log(lang);
