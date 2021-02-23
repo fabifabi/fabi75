@@ -33,8 +33,8 @@ function change(src) {
         , 500);
     function get() {
         postAjax(urlDetect, { key: api, q: src }, function (res) {
+            log(res);
             var txt = JSON.parse(res);
-            log(txt);
             var lang = txt.data.detections[0][0].language;
             log(txt.data);
             log(lang);
@@ -47,8 +47,8 @@ function change(src) {
 
             }
             getAjax(urls + enc, function (res) {
+                log(res);
                 var txt = JSON.parse(res);
-                log(txt);
                 var val = txt.data.translations[0].translatedText
                 trad.value = val;
                 //var enc = encodeURI(trad.value);
@@ -69,8 +69,8 @@ function change(src) {
                         , 500);*/
                 function get2() {
                     getAjax(urld + enc, function (res) {
+                        log(res);
                         var txt = JSON.parse(res);
-                        log(txt);
                         var val = txt.data.translations[0].translatedText
                         trad2.value = val;
                     });
