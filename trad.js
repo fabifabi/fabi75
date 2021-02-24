@@ -81,6 +81,31 @@ var trad = `
 </div>`;
 
 
+function postAjax(url, data, success, progress) {
+    var params = typeof data === "string" ?
+        data :
+        Object.keys(data)
+            .map(function (k) {
+                return encodeURIComponent(k) + "=" + encodeURIComponent(data[k]);
+            })
+            .join("&");
+    var xhr = XMLHttpRequest ?
+        new XMLHttpRequest() :
+        new ActiveXObject("Microsoft.XMLHTTP");
+    xhr.onprogress = progress;
+    xhr.open("POST", url);
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState > 3 && xhr.status === 200) {
+            if (success !== undefined)
+                success(xhr.responseText);
+        }
+    };
+    xhr.setRequestHeader("X-Requested-With", "XMLHttpRequest");
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    xhr.send(params);
+    return xhr;
+}
+
 var log = console.log
 var all = {}
 function mytrad() {
