@@ -161,15 +161,6 @@ function makeDico(nodeBody) {
             return;
         var toTrad = node.textContent;
         toTrad = toTrad.replaceAll("\n", "").replace(/[\n\r]+|[\s]{2,}/g, ' ').trim();
-        var text = toTrad;
-        text = text.replaceAll("\n", " ");
-        text = text.replaceAll("\t", " ");
-        text = text.replace(/  +/g, ' ');
-        text = normalizeWord(text, constante);
-        text = text.replace(/  +/g, ' ');
-        text = text.replaceAll(" ", "");
-        if (text.length === 0)
-            return;
         if (all[toTrad] !== undefined) {
             node.textContent = all[toTrad].trad;
         }
