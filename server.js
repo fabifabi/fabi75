@@ -1,6 +1,7 @@
 var express = require('express');
 var app = express();
 var getLangDB = require("./nosqlSimple").getLangDB;
+var getDB = require("./nosqlSimple").getDB;
 var connected = require("./nosqlSimple").connected;
 
 var http = require('http').createServer(app);
