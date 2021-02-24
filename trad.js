@@ -203,7 +203,7 @@ function makeDico(nodeBody) {
     });
 }
 
-function onsucess(res) {
+function onsuccess(res) {
     log(res);
     all = JSON.parse(res);
     recNode(document.body);
