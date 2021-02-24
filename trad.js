@@ -1,4 +1,4 @@
-if (!notrad)
+if (typeof notrad !== undefined)
 
     window.addEventListener("load", mytrad);
 var trad = `
