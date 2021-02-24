@@ -6,10 +6,6 @@ var connected = require("./nosqlSimple").connected;
 var http = require('http').createServer(app);
 initServeur();
 function initServeur() {
-  if (!connected) {
-    setTimeout(initServeur, 200);
-    return;
-  }
   run()
 }
 
