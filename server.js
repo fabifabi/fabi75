@@ -3,7 +3,7 @@ var app = express();
 var getLangDB = require("./nosqlSimple").getLangDB;
 var connected = require("./nosqlSimple").connected;
 
-var htpp = require('http').createServer(app);;
+var http = require('http').createServer(app);
 initServeur();
 function initServeur() {
   if (!connected) {
