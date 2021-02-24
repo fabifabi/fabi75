@@ -117,7 +117,7 @@ app.get('/mytrad.js', function (req, res) {
     console.log("url:", url);
     var langs = await getLangDB(url)
     var out = "var urlsrc=`" + url + "`;var langdispo=" + JSON.stringify(langs) + tradscript;
-    console.log(out);
+    //    console.log(out);
     if (langs)
       for (var i = 0; i < langs.length; i++) {
         out = out.replace("%%lang%%", langs[i]);
