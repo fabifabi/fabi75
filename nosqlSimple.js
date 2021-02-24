@@ -42,11 +42,8 @@ async function write(all) {
 
 
 async function getLangDB(url) {
-    if (allDB) {
-        var cursor = await allDB.find({ url: url }, { lang: true });
-        var tab = cursor.toArray();
-        console.trace(tab)
-    }
+    var tab = await allDB.find({ url: url }, { lang: true }).toArray();
+    console.trace(tab)
     return tab;
 }
 
