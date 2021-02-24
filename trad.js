@@ -128,26 +128,6 @@ function mytrad() {
 function makeDico(nodeBody) {
     recNode(nodeBody, function (node) {
         if (node.nodeType === Node.ELEMENT_NODE) {
-            var element = node;
-            if (element.tagName === "IFRAME") {
-                log("IFRAME ", element)
-                iframeExt(element);
-                element.nwfaketop = true;
-                element.nwdisable = true;
-                makeDico(element.body);
-            }
-            element.onclick = function (event) {
-                if (!modeEdit) {
-                    return;
-                }
-                event.stopImmediatePropagation();
-                return false;
-            }
-            element.onauxclick = function (event) {
-                if (!modeEdit) return;
-                event.stopImmediatePropagation();
-                return false;
-            }
             return;
         }
         if (node.nodeType !== 3 || node.isElementContentWhitespace)
