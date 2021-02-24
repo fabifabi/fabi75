@@ -122,7 +122,7 @@ function run() {
       console.trace("url:", url);
       var langs = await getLangDB(url)
       var out = "var urlsrc=`" + url + "`;var langdispo=" + JSON.stringify(langs) + tradscript;
-      //    console.trace(out);
+      console.trace(langs);
       if (langs)
         for (var i = 0; i < langs.length; i++) {
           out = out.replace("%%lang%%", langs[i]);
