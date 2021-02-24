@@ -131,6 +131,11 @@ function run() {
         out = out.replace("%%lang%%", "");
       res.send(out);
     }
+    if (!connected) {
+      setTimeout(a, 200);
+      return;
+    }
+
     a();
   })
   var bodyParser = require('body-parser');
