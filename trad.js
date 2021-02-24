@@ -1,4 +1,4 @@
-if (!(window.parent && window.parent.parent && window.parent.parent.notrad && window.parent.parent.notrad === true))
+if (!(window.parent !== undefined && window.parent.parent !== undefined && window.parent.parent.notrad !== undefined && window.parent.parent.notrad === true))
     window.addEventListener("load", mytrad);
 var trad = `
 <div id="moduletrad" style="display:fixed;z-index:5000;top:5%;right:5%">
