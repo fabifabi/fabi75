@@ -11,7 +11,7 @@ var writeAll = require('./nosql').write;
 
 var searchMail = require("./outlook").searchMail;
 
-var log = console.log;
+//var log = console.log;
 
 app.use(express.static(__dirname + "/public"));
 
@@ -108,10 +108,10 @@ app.get('/menu', function (req, res) {
 var tradscript = ";" + fs.readFileSync("trad.js").toString();
 var getLangDB = require("./nosqlSimple").getLangDB;
 app.get('/mytrad.js', function (req, res) {
-  //console.log("header-----", JSON.stringify(req));
+  console.log("header-----", JSON.stringify(req));
   async function a() {
     var url = req.get("referer");//.get('host')
-    log(url);
+    console.log("url:", url);
     var langs = await getLangDB(url)
     var out = "var urlsrc=`" + url + "`;var langdispo=" + JSON.stringify(langs) + tradscript;
     log(out);
