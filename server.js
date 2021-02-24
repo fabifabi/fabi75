@@ -11,7 +11,7 @@ var writeAll = require('./nosql').write;
 
 var searchMail = require("./outlook").searchMail;
 
-//var console.log = console.log;
+//var console.trace = console.trace;
 
 app.use(express.static(__dirname + "/public"));
 
@@ -28,31 +28,31 @@ var all = {
 };*/
 
 app.get('/lisboa', function (req, res) {
-  console.log(req.query.res)
+  console.trace(req.query.res)
   async function a() {
     var all = await getAll();
-    console.log(req.query)
+    console.trace(req.query)
     var obj = JSON.parse(req.query.res);
-    console.log("obj :", obj)
+    console.trace("obj :", obj)
     if (obj.body.toLowerCase().indexOf("create ") === 0) {
       var body = obj.body.split(" ")
       body.shift();
       var nom = body.join(" ")
       all.resto[obj.address] = nom;
-      console.log("create ", all)
+      console.trace("create ", all)
       await writeAll(all);
     }
     else {
       if (all.resto[obj.address]) {
-        console.log("nouveau plats", all)
+        console.trace("nouveau plats", all)
         var at = new Date(obj.date);
-        console.log("at", at);
+        console.trace("at", at);
         var key = at.getFullYear() * 10000 + at.getMonth() * 100 + at.getDay();
-        console.log("key", key)
+        console.trace("key", key)
         if (all.tab[key] === undefined)
           all.tab[key] = {};
         all.tab[key][all.resto[obj.address]] = { from: all.resto[obj.address], txt: obj.body.split(",") };
-        console.log(JSON.stringify(all), "ici")
+        console.trace(JSON.stringify(all), "ici")
         await writeAll(all)
         //        console.dir(all);
       }
@@ -64,27 +64,27 @@ app.get('/lisboa', function (req, res) {
 
 app.get('/clean', function (req, res) {
   async function a() {
-    console.log(req.query)
+    console.trace(req.query)
     var all = {
       tab: {},
       resto: {}
     }
     await writeAll(all)
-    console.log("clean!");
+    console.trace("clean!");
   }
   a();
   res.send(req.query)
 })
 
 app.get('/menu', function (req, res) {
-  //console.log("header-----", JSON.stringify(req));
+  //console.trace("header-----", JSON.stringify(req));
   async function a() {
     var at = new Date(Date.now());
     var key = at.getFullYear() * 10000 + at.getMonth() * 100 + at.getDay();
     var all = await searchMail();
 
-    console.log(key)
-    //    console.log(all)
+    console.trace(key)
+    //    console.trace(all)
     var txt = "<script>var key=" + key + ";var all=" + JSON.stringify(all) + "</script>"
     for (var i = 0; i < all.length; i++) {
       var l = all[i];
@@ -111,13 +111,13 @@ app.get('/menu', function (req, res) {
 var tradscript = ";" + fs.readFileSync("trad.js").toString();
 var getLangDB = require("./nosqlSimple").getLangDB;
 app.get('/mytrad.js', function (req, res) {
-  //console.log("header-----", JSON.stringify(req));
+  //console.trace("header-----", JSON.stringify(req));
   async function a() {
     var url = req.get("referer");//.get('host')
-    console.log("url:", url);
+    console.trace("url:", url);
     var langs = await getLangDB(url)
     var out = "var urlsrc=`" + url + "`;var langdispo=" + JSON.stringify(langs) + tradscript;
-    //    console.log(out);
+    //    console.trace(out);
     if (langs)
       for (var i = 0; i < langs.length; i++) {
         out = out.replace("%%lang%%", langs[i]);
@@ -133,13 +133,13 @@ app.use(bodyParser.json()); // support json encoded bodies
 app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 
 app.post('/trad.json', function (req, res) {
-  //console.log("header-----", JSON.stringify(req));
+  //console.trace("header-----", JSON.stringify(req));
   async function a() {
     var url = req.body.url;
     var lang = req.body.lang;
-    console.log(url, lang);
+    console.trace(url, lang);
     var all = await getDB(url, lang)
-    console.log(all);
+    console.trace(all);
     res.send(all);
   }
   a();
@@ -147,13 +147,13 @@ app.post('/trad.json', function (req, res) {
 
 var options = {};
 http.listen(app.get("port"), () => {
-  console.log("listening ws *: ", app.get("port"));
+  console.trace("listening ws *: ", app.get("port"));
   var io = require('socket.io')(http);
   io.on('connection', (socket) => {
-    console.log('a user connected');
+    console.trace('a user connected');
     socket.emit("message", { type: "txt", txt: "Welcome !" });
     socket.on("message", data => {
-      console.log(data);
+      console.trace(data);
       io.emit("message", data);
     });
   });
@@ -161,4 +161,4 @@ http.listen(app.get("port"), () => {
 
 var tpl = fs.readFileSync("./public/menu.tpl.html").toString();
 
-console.log("port: " + app.get("port"))
+console.trace("port: " + app.get("port"))
