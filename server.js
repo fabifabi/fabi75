@@ -11,7 +11,7 @@ var writeAll = require('./nosql').write;
 
 var searchMail = require("./outlook").searchMail;
 
-//var log = console.log;
+//var console.log = console.log;
 
 app.use(express.static(__dirname + "/public"));
 
@@ -28,31 +28,31 @@ var all = {
 };*/
 
 app.get('/lisboa', function (req, res) {
-  log(req.query.res)
+  console.log(req.query.res)
   async function a() {
     var all = await getAll();
-    log(req.query)
+    console.log(req.query)
     var obj = JSON.parse(req.query.res);
-    log("obj :", obj)
+    console.log("obj :", obj)
     if (obj.body.toLowerCase().indexOf("create ") === 0) {
       var body = obj.body.split(" ")
       body.shift();
       var nom = body.join(" ")
       all.resto[obj.address] = nom;
-      log("create ", all)
+      console.log("create ", all)
       await writeAll(all);
     }
     else {
       if (all.resto[obj.address]) {
-        log("nouveau plats", all)
+        console.log("nouveau plats", all)
         var at = new Date(obj.date);
-        log("at", at);
+        console.log("at", at);
         var key = at.getFullYear() * 10000 + at.getMonth() * 100 + at.getDay();
-        log("key", key)
+        console.log("key", key)
         if (all.tab[key] === undefined)
           all.tab[key] = {};
         all.tab[key][all.resto[obj.address]] = { from: all.resto[obj.address], txt: obj.body.split(",") };
-        log(JSON.stringify(all), "ici")
+        console.log(JSON.stringify(all), "ici")
         await writeAll(all)
         //        console.dir(all);
       }
@@ -64,13 +64,13 @@ app.get('/lisboa', function (req, res) {
 
 app.get('/clean', function (req, res) {
   async function a() {
-    log(req.query)
+    console.log(req.query)
     var all = {
       tab: {},
       resto: {}
     }
     await writeAll(all)
-    log("clean!");
+    console.log("clean!");
   }
   a();
   res.send(req.query)
@@ -83,8 +83,8 @@ app.get('/menu', function (req, res) {
     var key = at.getFullYear() * 10000 + at.getMonth() * 100 + at.getDay();
     var all = await searchMail();
 
-    log(key)
-    //    log(all)
+    console.log(key)
+    //    console.log(all)
     var txt = "<script>var key=" + key + ";var all=" + JSON.stringify(all) + "</script>"
     for (var i = 0; i < all.length; i++) {
       var l = all[i];
@@ -117,7 +117,7 @@ app.get('/mytrad.js', function (req, res) {
     console.log("url:", url);
     var langs = await getLangDB(url)
     var out = "var urlsrc=`" + url + "`;var langdispo=" + JSON.stringify(langs) + tradscript;
-    log(out);
+    console.log(out);
     if (langs)
       for (var i = 0; i < langs.length; i++) {
         out = out.replace("%%lang%%", langs[i]);
@@ -137,9 +137,9 @@ app.post('/trad.json', function (req, res) {
   async function a() {
     var url = req.body.url;
     var lang = req.body.lang;
-    log(url, lang);
+    console.log(url, lang);
     var all = await getDB(url, lang)
-    log(all);
+    console.log(all);
     res.send(all);
   }
   a();
