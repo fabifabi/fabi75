@@ -126,34 +126,6 @@ function mytrad() {
 }
 
 function makeDico(nodeBody) {
-    var cloneTrad = $viewTrad.doc.createElement("trad");
-    cloneTrad.style.cursor = "text";
-    cloneTrad.onclick = function (event) {
-        log("click");
-        if (!modeEdit) return;
-        event.stopImmediatePropagation();
-        return false;
-    }
-    cloneTrad.onfocus = function (event) {
-        if (!modeEdit) return;
-        this.classList.add("onedit");
-    };
-    //cloneTrad.contentEditable = true;
-    cloneTrad.onkeydown = function (event) {
-        if (!modeEdit) return;
-        this.classList.remove("onedit");
-        var nowElm = allelement[this.id];
-        var nowtext = this.innerText;
-        nowElm.trad = nowtext;
-        for (var i = 0; i < nowElm.where.length; i++) {
-            //    nowElm.where[i].dataset.original = false;
-            if (nowElm.where[i].id !== this.id)
-                nowElm.where[i].innerText = nowtext;
-        }
-        doList()
-        needsave = true;
-    }
-
     recNode(nodeBody, function (node) {
         if (node.nodeType === Node.ELEMENT_NODE) {
             var element = node;
