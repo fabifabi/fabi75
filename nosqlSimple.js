@@ -48,7 +48,7 @@ async function getLangDB(url) {
     for (var i = 0; i < tab.length; i++)
         res.push(tab[i].lang)
     console.trace(tab)
-    return tab;
+    return res;
 }
 
 exports.getLangDB = getLangDB;
