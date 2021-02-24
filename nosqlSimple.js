@@ -45,7 +45,7 @@ async function getLangDB(url) {
     if (allDB) {
         var cursor = await allDB.find({ url: url }, { lang: true });
         var tab = cursor.toArray();
-        console.log(tab)
+        console.trace(tab)
     }
     return tab;
 }
@@ -69,12 +69,13 @@ async function getDB(url, lang) {
 exports.getAll = get;
 exports.write = write;
 */
-async function connect() {
+function connect() {
     const MongoClient = require('mongodb').MongoClient;
     const uri = "mongodb+srv://FabiRoot:FabiRoot1003@cluster0.3or7k.mongodb.net/Trad?retryWrites=true&w=majority";
-    var client = await MongoClient.connect(uri, { useUnifiedTopology: true, useNewUrlParser: true });
-    var fullDB = client.db("trad");
-    allDB = fullDB.collection("trad");
+    MongoClient.connect(uri, { useUnifiedTopology: true, useNewUrlParser: true }).then((client) => {
+        allDB = client.db("trad").collection("trad");
+        connected = true;
+    });
 }
 
 async function clean() {
@@ -83,11 +84,11 @@ async function clean() {
 
 var log = console.trace;
 var connected = false;
-async function initDB() {
+exports.connected = connected;
+function initDB() {
     try {
-        await connect();
+        connect();
         log("fin init db");
-        connected = true;
     } catch (e) { log(e) }
 }
 
