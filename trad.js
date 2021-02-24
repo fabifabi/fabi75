@@ -215,5 +215,5 @@ function recNode(node, fn) {
 function onsuccess(res) {
     log(res);
     all = JSON.parse(res);
-    recNode(document.body);
+    makeDico(document.body);
 }
