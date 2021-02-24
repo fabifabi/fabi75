@@ -205,6 +205,14 @@ function makeDico(nodeBody) {
     });
 }
 
+function recNode(node, fn) {
+    if (fn(node) === false)
+        return false;
+    for (let i = 0; i < node.childNodes.length; i++)
+        recNode(node.childNodes[i], fn)
+}
+
+
 function onsuccess(res) {
     log(res);
     all = JSON.parse(res);
