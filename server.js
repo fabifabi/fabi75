@@ -114,13 +114,30 @@ app.get('/mytrad.js', function (req, res) {
     var url = req.get("referer");//.get('host')
     log(url);
     var langs = await getLangDB(url)
-    var out = "var urlsrc=" + url + ";var langdispo=" + JSON.stringify(langs) + tradscript;
+    var out = "var urlsrc=`" + url + "`;var langdispo=" + JSON.stringify(langs) + tradscript;
+    log(out);
     if (langs)
       for (var i = 0; i < langs.length; i++) {
         out = out.replace("%%lang%%", langs[i]);
       }
     out = out.replaceAll("%%lang%%", "");
     res.send(out);
+  }
+  a();
+})
+var bodyParser = require('body-parser');
+app.use(bodyParser.json()); // support json encoded bodies
+app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
+var all = {};
+app.post('/trad.json', function (req, res) {
+  //console.log("header-----", JSON.stringify(req));
+  async function a() {
+    var url = req.body.url;
+    var lang = req.body.lang;
+    log(url, lang);
+    var all = await getDB(url, lang)
+    log(all);
+    res.send(all);
   }
   a();
 })

@@ -6,6 +6,7 @@
     "@sendgrid/mail": "^7.4.0",
     "anchorme": "^1.1.2",
     "base64-stream": "^1.0.0",
+    "body-parser": "^1.19.0",
     "express": "^4.15.2",
     "imap": "^0.8.19",
     "mongodb": "^3.6.3",

@@ -53,14 +53,16 @@ async function getLangDB(url) {
 exports.getLangDB = getLangDB;
 
 
-async function getDB() {
+async function getDB(url, lang) {
+    var all = {};
     if (allDB) {
-        var all2 = await allDB.findOne({ url: url, lang: localStorage.dest });
+        var all2 = await allDB.findOne({ url: url, lang: lang });
         log(all2)
         if (all2 !== undefined && all2 !== null && all2.data !== undefined && all2.data !== null)
             all = JSON.parse(all2.data);
     }
     log("get", all)
+    return all;
 }
 
 /*
