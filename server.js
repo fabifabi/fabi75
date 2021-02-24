@@ -112,7 +112,7 @@ app.get('/mytrad.js', function (req, res) {
   async function a() {
     var url = req.get("referer");//.get('host')
     log(url);
-    var langs = await clear(url)
+    var langs = await getLangDB(url)
     var out = "var urlsrc=`" + url + "`;var langdispo=" + JSON.stringify(langs) + tradscript;
     log(out);
     if (langs)
