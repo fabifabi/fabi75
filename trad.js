@@ -1,4 +1,4 @@
-if (window.parent && window.parent.parent && !window.parent.parent.notrad)
+if (window.parent && window.parent.parent && !!window.parent.parent.notrad)
 
     window.addEventListener("load", mytrad);
 var trad = `
