@@ -120,7 +120,8 @@ app.get('/mytrad.js', function (req, res) {
       for (var i = 0; i < langs.length; i++) {
         out = out.replace("%%lang%%", langs[i]);
       }
-    out = out.replaceAll("%%lang%%", "");
+    while (out.includes("%%lang%%"))
+      out = out.replace("%%lang%%", "");
     res.send(out);
   }
   a();
