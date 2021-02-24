@@ -79,7 +79,6 @@ app.get('/clean', function (req, res) {
 app.get('/menu', function (req, res) {
   //console.log("header-----", JSON.stringify(req));
   async function a() {
-
     var at = new Date(Date.now());
     var key = at.getFullYear() * 10000 + at.getMonth() * 100 + at.getDay();
     var all = await searchMail();
@@ -101,6 +100,10 @@ app.get('/menu', function (req, res) {
     }
     var out = tpl.replace("%%insert%%", txt)
     res.send(out);
+  }
+  if (!connected) {
+    setTimeout(a, 300);
+    return;
   }
   a();
 })
