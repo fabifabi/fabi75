@@ -128,6 +128,10 @@ function mytrad() {
 function makeDico(nodeBody) {
     recNode(nodeBody, function (node) {
         if (node.nodeType === Node.ELEMENT_NODE) {
+            if (element.tagName === "IFRAME") {
+                log("IFRAME ", element)
+                makeDico(element.body);
+            }
             return;
         }
         if (node.nodeType !== 3 || node.isElementContentWhitespace)
