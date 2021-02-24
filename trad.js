@@ -94,7 +94,7 @@ function mytrad() {
     mtrad.onclick = function (e) {
         var dst = e.target.innerText;
         if (dst === "Original")
-            return;
+            location.reload();
         postAjax("trad.json", { url: urlsrc, lang: dst }, onsuccess);
     }
 }
