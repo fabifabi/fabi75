@@ -115,7 +115,7 @@ function run() {
       }
       var out = tpl.replace("%%insert%%", txt)
       res.send(out);
-    }
+    } 1 + 1;
     a();
   })
 
