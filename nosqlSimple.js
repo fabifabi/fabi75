@@ -52,6 +52,7 @@ async function getLangDB(url) {
 }
 
 exports.getLangDB = getLangDB;
+exports.getDB = getDB;
 
 
 async function getDB(url, lang) {
