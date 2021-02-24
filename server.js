@@ -3,8 +3,8 @@ var app = express();
 var getLangDB = require("./nosqlSimple").getLangDB;
 var connected = require("./nosqlSimple").connected;
 
+var htpp = require('http').createServer(app);;
 initServeur();
-
 function initServeur() {
   if (!connected) {
     setTimeout(initServeur, 200);
@@ -15,7 +15,6 @@ function initServeur() {
 
 function run() {
 
-  var http = require('http').createServer(app);
   var anchorme = require("anchorme").default;
   var emoji = require('node-emoji');
   var fs = require("fs");
@@ -115,7 +114,7 @@ function run() {
       }
       var out = tpl.replace("%%insert%%", txt)
       res.send(out);
-    } 1 + 1;
+    }
     a();
   })
 
