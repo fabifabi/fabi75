@@ -45,7 +45,7 @@ async function getLangDB(url) {
     if (allDB) {
         var cursor = await allDB.find({ url: url }, { lang: true });
         var tab = cursor.toArray();
-        log(tab)
+        console.log(tab)
     }
     return tab;
 }
