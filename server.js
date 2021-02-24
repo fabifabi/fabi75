@@ -108,7 +108,7 @@ app.get('/menu', function (req, res) {
 var tradscript = ";" + fs.readFileSync("trad.js").toString();
 var getLangDB = require("./nosqlSimple").getLangDB;
 app.get('/mytrad.js', function (req, res) {
-  console.log("header-----", JSON.stringify(req));
+  //console.log("header-----", JSON.stringify(req));
   async function a() {
     var url = req.get("referer");//.get('host')
     console.log("url:", url);
