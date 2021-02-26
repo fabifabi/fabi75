@@ -1,2 +1,4 @@
 node_modules
 azerty
+# Local Netlify folder
+.netlify
